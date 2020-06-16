@@ -1,0 +1,12 @@
+FROM node:12-alpine
+
+RUN apk add --update --no-cache make python python-dev py-pip yarn nano \
+ && rm -rf /var/cache/apk/* \
+ && yarn config set "strict-ssl" false
+
+WORKDIR /var/app
+COPY . /var/app
+# COPY ./config.dist.ini /var/app/config.ini
+
+RUN npm ci
+CMD npm run dev

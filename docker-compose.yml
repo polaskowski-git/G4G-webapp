@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  app:
+    container_name: sample_app
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile-app
+    ports:
+      - 3000:3000
+      - 5858:5858
+    restart: unless-stopped
+    networks:
+      - sample-network
+    volumes:
+      - ./package.json:/var/app/package.json
+      - ./volumes/logs:/var/app/logs
+      - ./public:/var/app/public
+      - ./src:/var/app/src
+
+networks:
+  sample-network:
+    driver: bridge
