@@ -1,13 +1,25 @@
-import * as express from "express";
+import "reflect-metadata";
+import { Container } from "inversify";
+import * as bodyParser from "body-parser";
 
-const app = express();
+import App from "./app";
 
-app.get("/", (req, res) => {
-    res.send("Hello World")
+import { loggerMiddleware } from "./middlewares/logger.middleware";
+
+import { ConfigUtil } from "./utils/config.util";
+
+import "./controllers/home.controller";
+
+ConfigUtil.parse("./config.ini");
+
+const container = new Container({ defaultScope: "Singleton", autoBindInjectable: true });
+
+
+const app = new App(container, {
+	middleWares: [bodyParser.json(), bodyParser.urlencoded({ extended: true }), loggerMiddleware],
+	subscribers: []
 });
 
-const PORT = process.env.PORT || 3000;
+app.listen();
 
-app.listen(PORT, () => {
-     console.log(`Server is running in http://localhost:${PORT}`)
-})
+export { app };

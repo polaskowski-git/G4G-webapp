@@ -2,22 +2,60 @@ version: "2"
 
 services:
   app:
-    container_name: sample_app
+    container_name: green4go_app
     build:
       context: ./
       dockerfile: docker/Dockerfile-app
     ports:
-      - 3000:3000
+      - 3100:3100
       - 5858:5858
     restart: unless-stopped
     networks:
-      - sample-network
+      - green4go-network
     volumes:
       - ./package.json:/var/app/package.json
       - ./volumes/logs:/var/app/logs
       - ./public:/var/app/public
       - ./src:/var/app/src
+      - ./assets:/var/app/assets:ro
+      - ./translations:/var/app/translations:ro
+      - ./templates:/var/app/templates:ro
+
+  db:
+    container_name: green4go_db
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile-db
+    # read_only: true
+    restart: unless-stopped
+    ports:
+      - 3101:3306
+    expose:
+      - 3101
+    networks:
+      - green4go-network
+    volumes:
+      - ./volumes/db/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=green4go
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=green4go
+    logging:
+      driver: none
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: green4go_pma
+    networks:
+      - green4go-network
+    links:
+      - db:mysql
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - 3102:80
 
 networks:
-  sample-network:
+  green4go-network:
     driver: bridge
