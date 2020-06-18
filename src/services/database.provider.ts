@@ -4,7 +4,7 @@ import { createConnection, Connection, Repository } from "typeorm";
 
 import { BaseRepository } from "../repositories/base.repository";
 import { BaseEntity } from "../entities/base.entity";
-import { ConfigTypeORM } from "../constants/configs";
+import { CONFIG } from "../constants/configs";
 
 @injectable()
 export default class DatabaseProvider {
@@ -12,7 +12,7 @@ export default class DatabaseProvider {
 	public repostitories: BaseRepository<any>[] = [];
 
 	public async createConnection(): Promise<void> {
-		this.db = await createConnection(ConfigTypeORM).catch(err => {
+		this.db = await createConnection(CONFIG.TYPEORM).catch(err => {
 			console.error(err);
 			return null;
 		});
