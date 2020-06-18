@@ -1,0 +1,13 @@
+node_modules
+build/**/*
+volumes
+public/build
+public/uploads
+docker/volumes/logs
+certs
+config.ini
+.vscode
+logs
+cypress
+firebase-adminsdk-config.json
+ormconfig.json
