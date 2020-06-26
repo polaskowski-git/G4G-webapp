@@ -27,26 +27,31 @@ export class CONFIG {
 		PASSWORD: process.env["DATABASE.PASSWORD"] || ""
 	};
 
+    public static DEFAULTS = {
+		AVATAR: process.env["DEFAULTS.AVATAR"] || "/assets/img/defaultAvatar.jpg"
+	};
+
 	public static get HTTP_PROTOCOL(): "http" | "https" {
 		return CONFIG.SERVER.SSL_ENABLED ? "https" : "http";
 	}
 
+	public static get TYPEORM() {
+		return {
+			type: "mariadb",
+			host: CONFIG.DATABASE.HOST,
+			port: CONFIG.DATABASE.PORT,
+			username: CONFIG.DATABASE.USERNAME,
+			password: CONFIG.DATABASE.PASSWORD,
+			database: CONFIG.DATABASE.DATABASE,
+			entities: [resolve(__dirname, "../**/entities/*")],
+			migrations: [resolve(__dirname, "../**/migrations/*")],
+			migrationsTableName: "migrations_node",
+			cli: {
+				migrationsDir: "src/migrations"
+			}
+		} as ConnectionOptions
+	}
+
 }
 
-ConfigUtil.parse(resolve(__dirname, "../../config.ini"));
-
-export const ConfigTypeORM = {
-	type: "mariadb",
-	host: CONFIG.DATABASE.HOST,
-	port: CONFIG.DATABASE.PORT,
-	username: CONFIG.DATABASE.USERNAME,
-	password: CONFIG.DATABASE.PASSWORD,
-	database: CONFIG.DATABASE.DATABASE,
-	entities: [resolve(__dirname, "../**/entity/*")],
-	migrations: [resolve(__dirname, "../**/migrations/*")],
-	migrationsTableName: "migrations_node",
-	cli: {
-		migrationsDir: "src/migrations"
-	}
-} as ConnectionOptions;
 
