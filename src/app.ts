@@ -3,7 +3,9 @@ import * as i18n from "i18n";
 import * as http from "http";
 import * as https from "https";
 import * as fs from "fs";
+import { join } from "path";
 import * as cors from "cors";
+import * as swagger from "swagger-express-ts";
 import { Application } from "express";
 import { InversifyExpressServer, BaseMiddleware } from "inversify-express-utils";
 import { Container } from "inversify";
@@ -33,12 +35,30 @@ class App {
 			this.assets();
 			this.translations();
 			this.template();
+			this.swagger();
 		});
 		this.server.build();
 	}
 
 	private async database(): Promise<void> {
 		await this.container.get(DatabaseProvider).createConnection();
+	}
+
+	private swagger(): void {
+		this.app.use("/dev/swagger/assets", express.static("node_modules/swagger-ui-dist"));
+		this.app.use(
+			swagger.express({
+				path: "/dev/swagger.json",
+				definition: {
+					basePath: "/api",
+					info: {
+						title: CONFIG.APPLICATION.NAME,
+						version: CONFIG.APPLICATION.VERSION
+					},
+					schemes: [CONFIG.HTTP_PROTOCOL]
+				}
+			})
+		);
 	}
 
 	private cors(): void {

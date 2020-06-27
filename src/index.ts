@@ -9,6 +9,7 @@ import { loggerMiddleware } from "./middlewares/logger.middleware";
 import { ConfigUtil } from "./utils/config.util";
 
 import "./controllers/home.controller";
+import "./controllers/dev.controller";
 
 ConfigUtil.parse("./config.ini");
 
