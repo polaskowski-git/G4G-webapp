@@ -1,3 +1,4 @@
+import * as sha1 from "sha1";
 import { Entity, Column, ManyToOne, JoinColumn, PrimaryColumn, Generated, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { ApiModel } from "swagger-express-ts";
 
@@ -98,6 +99,6 @@ export default class User extends BaseEntity<User> {
 	}
 
 	public verifyPassword(password: string) {
-		return this.password == password;
+		return this.password == sha1(password);
 	}
 }

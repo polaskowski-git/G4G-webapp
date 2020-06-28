@@ -33,6 +33,7 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
+    "sha1": "^1.1.1",
     "swagger-express-ts": "^1.0.1",
     "swagger-ui-dist": "^3.27.0",
     "twig": "^1.15.1",
