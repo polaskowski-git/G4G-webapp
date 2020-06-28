@@ -6,6 +6,9 @@ import * as fs from "fs";
 import { join } from "path";
 import * as cors from "cors";
 import * as swagger from "swagger-express-ts";
+import * as passport from "passport";
+import * as session from "express-session";
+import { Strategy } from "passport-local";
 import { Application } from "express";
 import { InversifyExpressServer, BaseMiddleware } from "inversify-express-utils";
 import { Container } from "inversify";
@@ -15,21 +18,25 @@ import { Lang } from "./constants/enums";
 import errorHandler from "./middlewares/error.handler";
 import BaseSubscriber from "./subscribers/base.subscriber";
 import DatabaseProvider from "./services/database.provider";
+import UserRepository from "./repositories/user.repository";
+import User from "./entities/user.entity";
 
 class App {
 	private app: Application;
 	private server: InversifyExpressServer;
 	private httpServer: http.Server;
 	private container: Container;
-
+	
 	constructor(container: Container, appInit: { middleWares: (NextHandleFunction | BaseMiddleware)[]; subscribers: BaseSubscriber[]; }) {
 		this.container = container;
-
+		
 		this.createApp();
 		this.errorHandlers();
-
+		
 		this.server.setConfig(app => {
 			this.app = app;
+			this.sessions();
+			this.passport();
 			this.cors();
 			this.middlewares(appInit.middleWares);
 			this.assets();
@@ -39,11 +46,11 @@ class App {
 		});
 		this.server.build();
 	}
-
+	
 	private async database(): Promise<void> {
 		await this.container.get(DatabaseProvider).createConnection();
 	}
-
+	
 	private swagger(): void {
 		this.app.use("/dev/swagger/assets", express.static("node_modules/swagger-ui-dist"));
 		this.app.use(
@@ -60,11 +67,19 @@ class App {
 			})
 		);
 	}
-
+	
+	private sessions(): void {
+		this.app.use(session({
+			secret: CONFIG.SERVER.SECRET,
+			resave: false,
+			saveUninitialized: true
+		}));
+	}
+	
 	private cors(): void {
 		if (CONFIG.SERVER.CORS_ENABLED) this.app.use(cors()); 
 	}
-
+		
 	private errorHandlers(): void {
 		this.server.setErrorConfig(app => {
 			app.use(errorHandler);
@@ -127,6 +142,32 @@ class App {
 				this.app
 			);
 		else this.httpServer = http.createServer(this.app);
+	}
+
+	private passport(): void {
+		const _userRepository = this.container.get(UserRepository);
+		passport.use(new Strategy(
+			function(username, password, done) {
+				_userRepository.findOneByUsername(username).then(user => {
+					if (!user) { return done(null, false); }
+					if (!user.verifyPassword(password)) { return done(null, false); }
+					return done(null, user);
+				}).catch(err => done(err));
+			}
+		));
+
+		passport.serializeUser(function(user: User, done) {
+			done(null, user.id);
+		  });
+		   
+		passport.deserializeUser(function(id: number, done) {
+			_userRepository.findOne(id).then(user => {
+				done(null, user);
+			}).catch(err => done(err));
+		});
+
+		this.app.use(passport.initialize());
+		this.app.use(passport.session());
 	}
 
 	public getContainer(): Container {

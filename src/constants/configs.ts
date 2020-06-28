@@ -16,7 +16,8 @@ export class CONFIG {
 		SSL_ENABLED: Boolean(process.env["SERVER.SSL_ENABLED"]) || false,
 		CERT_PATH: process.env["SERVER.CERT_PATH"] || "",
 		CERT_KEY_PATH: process.env["SERVER.CERT_KEY_PATH"] || "",
-		CORS_ENABLED: Boolean(process.env["SERVER.CORS_ENABLED"]) || false
+		CORS_ENABLED: Boolean(process.env["SERVER.CORS_ENABLED"]) || false,
+		SECRET: process.env["SERVER.SECRET"] || ""
 	};
 
 	public static DATABASE = {
