@@ -25,9 +25,9 @@ export default class User extends BaseEntity<User> {
 	})
 	id: number;
 
-	@ManyToOne(() => Level, { eager: true })
+	@ManyToOne(() => Level)
 	@JoinColumn({ name: "level_id" })
-    level: Level;
+    level: Promise<Level>;
     
     @ManyToMany(() => Achievement)
     @JoinTable()
@@ -95,5 +95,9 @@ export default class User extends BaseEntity<User> {
 			xpPoints: this.xpPoints,
 			avatar: this.avatar || CONFIG.DEFAULTS.AVATAR
 		};
+	}
+
+	public verifyPassword(password: string) {
+		return this.password == password;
 	}
 }

@@ -1,6 +1,8 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 import * as bodyParser from "body-parser";
+import * as cookieParser from "cookie-parser";
+import * as flash from "connect-flash";
 
 import App from "./app";
 
@@ -8,6 +10,7 @@ import { loggerMiddleware } from "./middlewares/logger.middleware";
 
 import { ConfigUtil } from "./utils/config.util";
 
+import "./controllers/auth.controller";
 import "./controllers/home.controller";
 import "./controllers/dev.controller";
 
@@ -17,7 +20,7 @@ const container = new Container({ defaultScope: "Singleton", autoBindInjectable:
 
 
 const app = new App(container, {
-	middleWares: [bodyParser.json(), bodyParser.urlencoded({ extended: true }), loggerMiddleware],
+	middleWares: [cookieParser(), bodyParser.json(), bodyParser.urlencoded({ extended: true }), flash(), loggerMiddleware],
 	subscribers: []
 });
 

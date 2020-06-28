@@ -8,6 +8,7 @@ import { CONFIG } from "../constants/configs";
 export default class HomeController extends BaseController {
 	@httpGet("/")
 	public index(req: Request, res: Response) {
+		console.log(req["user"]);
 		return this.render(res, "home.html.twig", {
 			app: CONFIG.APPLICATION
 		});
