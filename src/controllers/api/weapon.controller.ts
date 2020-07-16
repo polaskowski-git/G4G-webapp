@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { controller, httpGet } from "inversify-express-utils";
 import { ApiPath, ApiOperationGet } from "swagger-express-ts";
+import { inject } from "inversify";
 
 import BaseController from "../base.controller";
-import { inject } from "inversify";
 import WeaponRepository from "../../repositories/weapon.repository";
 import Weapon from "../../entities/weapon.entity";
 

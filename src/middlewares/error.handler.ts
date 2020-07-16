@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { NotFoundException, BadRequestException, ForbiddenException, ValidationException } from "../constants/Exceptions";
+import { NotFoundException, BadRequestException, ForbiddenException, ValidationException } from "../constants/exceptions";
 import { ValidationErrorModel } from "../models/validation.models";
 
 export default (err: Error, req: Request, res: Response, next: NextFunction) => {

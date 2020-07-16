@@ -7,7 +7,7 @@ import { validate } from "class-validator";
 import BaseController from "../base.controller";
 import TrainingRepository from "../../repositories/training.repository";
 import Training from "../../entities/training.entity";
-import { ValidationException, NotFoundException } from "../../constants/Exceptions";
+import { ValidationException, NotFoundException } from "../../constants/exceptions";
 import { TrainingModel, TrainingUpdateModel } from "../../models/training.models";
 import Round from "../../entities/round.entity";
 import WeaponRepository from "../../repositories/weapon.repository";
