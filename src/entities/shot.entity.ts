@@ -18,8 +18,8 @@ export default class Shot extends BaseEntity<Shot> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
-		type: "number"
+		required: false,
+		type: "integer"
 	})
 	id: number;
 
@@ -30,21 +30,30 @@ export default class Shot extends BaseEntity<Shot> {
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	coordinates_x: number;
 
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	coordinates_y: number;
 
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	points: number;
+
+	public toJSON() {
+		return {
+			id: this.id,
+			coordinates_x: this.coordinates_x,
+			coordinates_y: this.coordinates_y,
+			points: this.points
+		};
+	}
 }

@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { Container } from "inversify";
 import * as bodyParser from "body-parser";
-import * as cookieParser from "cookie-parser";
-import * as flash from "connect-flash";
+import cookieParser from "cookie-parser";
+import flash from "connect-flash";
 
 import App from "./app";
 
@@ -13,6 +13,8 @@ import { ConfigUtil } from "./utils/config.util";
 import "./controllers/auth.controller";
 import "./controllers/home.controller";
 import "./controllers/dev.controller";
+import "./controllers/api/weapon.controller";
+import "./controllers/api/training.controller";
 
 ConfigUtil.parse("./config.ini");
 

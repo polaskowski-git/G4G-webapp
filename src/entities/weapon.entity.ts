@@ -16,8 +16,8 @@ export default class Weapon extends BaseEntity<Weapon> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
-		type: "number"
+		required: false,
+		type: "integer"
 	})
 	id: number;
 
@@ -31,7 +31,7 @@ export default class Weapon extends BaseEntity<Weapon> {
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	magazineSize: number;
 
@@ -41,4 +41,13 @@ export default class Weapon extends BaseEntity<Weapon> {
 		type: "number"
 	})
 	caliberSize: number;
+
+	public toJSON() {
+		return {
+			id: this.id,
+			model: this.model,
+			magazineSize: this.magazineSize,
+			caliberSize: this.caliberSize
+		};
+	}
 }

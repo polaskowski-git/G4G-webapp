@@ -21,8 +21,8 @@ export default class User extends BaseEntity<User> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
-		type: "number"
+		required: false,
+		type: "integer"
 	})
 	id: number;
 
@@ -76,14 +76,14 @@ export default class User extends BaseEntity<User> {
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	streak: number = 0;
 
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	xpPoints: number = 0;
 	

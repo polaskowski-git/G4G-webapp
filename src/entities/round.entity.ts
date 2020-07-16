@@ -19,8 +19,8 @@ export default class Round extends BaseEntity<Round> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
-		type: "number"
+		required: false,
+		type: "integer"
 	})
 	id: number;
 
@@ -54,7 +54,7 @@ export default class Round extends BaseEntity<Round> {
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	points: number;
 
@@ -75,7 +75,19 @@ export default class Round extends BaseEntity<Round> {
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	overallScore: number;
+
+	public async toJSON() {
+		return {
+			id: this.id,
+			weapon: (await this.weapon).toJSON(),
+			shots: (await this.shots).map(s => s.toJSON()),
+			points: this.points,
+			accuracy: this.accuracy,
+			precision: this.precision,
+			overallScore: this.overallScore
+		};
+	}
 }
