@@ -17,8 +17,8 @@ export default class Level extends BaseEntity<Level> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
-		type: "number"
+		required: false,
+		type: "integer"
 	})
 	id: number;
 
@@ -38,14 +38,23 @@ export default class Level extends BaseEntity<Level> {
 	@Column("int")
 	@ApiModelProperty({
 		required: true,
-		type: "number"
+		type: "integer"
 	})
 	lowXpTreshold: number;
 
 	@Column("int", { nullable: true })
 	@ApiModelProperty({
 		required: false,
-		type: "number"
+		type: "integer"
 	})
 	highXpTreshold?: number;
+
+	public toJSON() {
+		return {
+			id: this.id,
+			model: this.title,
+			lowXpTreshold: this.lowXpTreshold,
+			highXpTreshold: this.highXpTreshold
+		};
+	}
 }

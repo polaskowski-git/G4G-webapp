@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { NotFoundException, BadRequestException, ForbiddenException, ValidationException } from "../constants/Exceptions";
-// import { ValidationError } from "../models/ValidationError";
+import { ValidationErrorModel } from "../models/validation.models";
 
 export default (err: Error, req: Request, res: Response, next: NextFunction) => {
 	if (err instanceof NotFoundException) res.status(404).send("Not found");
@@ -8,7 +8,7 @@ export default (err: Error, req: Request, res: Response, next: NextFunction) => 
 		if (err instanceof ValidationException) {
 			res.status(400).send({
 				status: false,
-				// errors: ValidationError.prepareInfo(err.errors)
+				errors: ValidationErrorModel.prepareInfo(err.errors)
 			});
 		} else {
 			res.status(400).send("Bad request");

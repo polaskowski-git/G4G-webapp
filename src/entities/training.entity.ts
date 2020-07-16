@@ -18,7 +18,7 @@ export default class Training extends BaseEntity<Training> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
+		required: false,
 		type: "number"
 	})
 	id: number;
@@ -66,4 +66,14 @@ export default class Training extends BaseEntity<Training> {
 	})
 	earnedXp: number;
 
+	public async toJSON() {
+		return {
+			id: this.id,
+			rounds: await Promise.all(((await this.rounds) || []).map(async r => await r.toJSON())),
+			name: this.name,
+			startDateTime: this.startDateTime,
+			endDateTime: this.endDateTime,
+			earnedXp: this.earnedXp
+		};
+	}
 }

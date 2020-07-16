@@ -17,8 +17,8 @@ export default class Achievement extends BaseEntity<Achievement> {
 	@PrimaryColumn({ type: "int", unsigned: true })
 	@Generated()
 	@ApiModelProperty({
-		required: true,
-		type: "string"
+		required: false,
+		type: "integer"
 	})
 	id: number;
 
