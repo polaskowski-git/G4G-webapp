@@ -30,6 +30,7 @@
     "lodash": "^4.17.19",
     "mysql": "^2.18.1",
     "passport": "^0.4.1",
+    "passport-headerapikey": "^1.2.1",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
@@ -37,7 +38,8 @@
     "swagger-express-ts": "^1.0.1",
     "swagger-ui-dist": "^3.27.0",
     "twig": "^1.15.1",
-    "typeorm": "^0.2.25"
+    "typeorm": "^0.2.25",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@types/connect-flash": "0.0.35",

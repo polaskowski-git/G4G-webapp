@@ -1,22 +1,29 @@
 import passport from "passport";
-import { Request, Response } from "express";
+import { ForbiddenException } from "../constants/exceptions";
 
-export const authorize = passport.authenticate('local', { 
+export const authorize = passport.authenticate('local', {
   failureRedirect: '/auth/login',
-  failureFlash: "Invalid username or password." 
+  failureFlash: "Invalid username or password."
+});
+
+export const authorizeApi = passport.authenticate('local', {
+  session: false
 });
 
 export function checkAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
+    passport.authenticate("headerapikey")(req, res, function() {
+      if (req.user) {
+         return next();
+      }
 
-    res.redirect('/auth/login');
+      next(new ForbiddenException());
+    });
 }
 
 export function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect('/');
+  if (req.user) {
+    next(new ForbiddenException());
   }
+
   next();
 }

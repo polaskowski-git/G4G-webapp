@@ -1,4 +1,4 @@
-import * as sha1 from "sha1";
+import sha1 from "sha1";
 import { Entity, Column, ManyToOne, JoinColumn, PrimaryColumn, Generated, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { ApiModel } from "swagger-express-ts";
 
@@ -8,6 +8,7 @@ import Level from "./level.entity";
 import Achievement from "./achievement.entity";
 import Training from "./training.entity";
 import { ApiModelProperty } from "../constants/decorators";
+import UserToken from "./userToken.entity";
 
 @Entity({
 	name: "users"
@@ -48,6 +49,12 @@ export default class User extends BaseEntity<User> {
 		model: Level.NAME
 	})
 	trainings: Promise<Training[]>;
+
+	@OneToMany(
+		() => UserToken,
+		c => c.user
+	)
+	tokens: Promise<UserToken[]>;
 
 	@Column("varchar", { length: 64 })
 	@ApiModelProperty({

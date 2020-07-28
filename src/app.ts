@@ -9,6 +9,7 @@ import * as swagger from "swagger-express-ts";
 import passport from "passport";
 import session from "express-session";
 import { Strategy } from "passport-local";
+import { HeaderAPIKeyStrategy } from "passport-headerapikey";
 import { Application } from "express";
 import { InversifyExpressServer, BaseMiddleware } from "inversify-express-utils";
 import { Container } from "inversify";
@@ -22,6 +23,7 @@ import UserRepository from "./repositories/user.repository";
 import User from "./entities/user.entity";
 
 class App {
+	private static readonly SECURITY_HEADER_KEY = "X-API-Key";
 	private app: Application;
 	private server: InversifyExpressServer;
 	private httpServer: http.Server;
@@ -62,7 +64,14 @@ class App {
 						title: CONFIG.APPLICATION.NAME,
 						version: CONFIG.APPLICATION.VERSION
 					},
-					schemes: [CONFIG.HTTP_PROTOCOL]
+					schemes: [CONFIG.HTTP_PROTOCOL],
+					securityDefinitions: {
+						APIKeyHeader: {
+							type: "apiKey",
+							in: "header",
+							name: App.SECURITY_HEADER_KEY
+						}
+					}
 				}
 			})
 		);
@@ -156,9 +165,20 @@ class App {
 			}
 		));
 
+		passport.use(new HeaderAPIKeyStrategy(
+			{ header: App.SECURITY_HEADER_KEY, prefix: "" },
+			false,
+			function(apiKey, done) {
+				_userRepository.findOneByToken(apiKey).then(user => {
+					if (!user) { return done(null, false); }
+					return done(null, user);
+				}).catch(err => done(err));
+			}
+		));
+
 		passport.serializeUser(function(user: User, done) {
 			done(null, user.id);
-		  });
+		});
 		   
 		passport.deserializeUser(function(id: number, done) {
 			_userRepository.findOne(id).then(user => {

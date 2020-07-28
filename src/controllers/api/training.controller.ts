@@ -14,12 +14,14 @@ import WeaponRepository from "../../repositories/weapon.repository";
 import Shot from "../../entities/shot.entity";
 import RoundRepository from "../../repositories/round.repository";
 import ShotRepository from "../../repositories/shot.repository";
+import { checkAuthenticated } from "../../middlewares/auth.handler";
+import { ValidationErrorModel } from "../../models/validation.models";
 
 @ApiPath({
 	path: "/trainings",
 	name: "Trainings"
 })
-@controller("/api/trainings")
+@controller("/api/trainings", checkAuthenticated)
 export default class TrainingController extends BaseController {
     constructor(@inject(TrainingRepository) private _trainingRepository: TrainingRepository, @inject(WeaponRepository) private _weaponRepository: WeaponRepository, @inject(RoundRepository) private _roundRepository: RoundRepository, @inject(ShotRepository) private _shotRepository: ShotRepository) {
         super();
@@ -29,7 +31,11 @@ export default class TrainingController extends BaseController {
 		path: "/",
 		summary: "Get training list",
 		responses: {
-			200: { type: "array", model: Training.NAME }
+			200: { type: "array", model: Training.NAME },
+			401: {}
+		},
+		security: {
+			APIKeyHeader: []
 		}
 	})
 	@httpGet("/")
@@ -48,7 +54,12 @@ export default class TrainingController extends BaseController {
 		},
 		summary: "Create training",
 		responses: {
-			200: { model: Training.NAME }
+			200: { model: Training.NAME },
+			400: { model: ValidationErrorModel.NAME },
+			401: {}
+		},
+		security: {
+			APIKeyHeader: []
 		}
 	})
 	@httpPost("/")
@@ -82,7 +93,12 @@ export default class TrainingController extends BaseController {
 		},
 		summary: "Update training",
 		responses: {
-			200: { model: Training.NAME }
+			200: { model: Training.NAME },
+			400: { model: ValidationErrorModel.NAME },
+			401: {}
+		},
+		security: {
+			APIKeyHeader: []
 		}
 	})
 	@httpPut("/:id")
