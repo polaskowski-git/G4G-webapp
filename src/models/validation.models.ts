@@ -34,7 +34,7 @@ export class ValidationErrorModel extends BaseModel<ValidationErrorModel> {
 			return {
 				field: err.property,
 				message: head(values(err.constraints)),
-				children: ValidationErrorModel.prepareInfo(err.children)
+				children: ValidationErrorModel.prepareInfo(err.children || [])
 			} as ValidationErrorModel;
 		});
 	}
