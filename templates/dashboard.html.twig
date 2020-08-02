@@ -1,0 +1,238 @@
+{% extends './base.html.twig' %}
+
+{% set breadcrumbs = [{title: "Dashboard"}] %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="page_content_wrap page_paddings_no">
+    <!-- Content -->
+    <div class="content">
+        <article class="post_item post_item_single">
+            <section class="post_content">
+                <!-- Counters -->
+                <div class="content_wrap">
+                    <div class="empty_space height_7_65em"></div>
+                        <div class="columns_wrap sc_columns columns_nofluid sc_columns_count_4 counters_section">
+                            <div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 no-hover odd first">
+                                        <div class="sc_skills sc_skills_circle width_180_imp div-center" data-type="circle" data-caption="Skills">
+                                            <div class="columns_wrap sc_skills_columns sc_skills_columns_1">
+                                                <div class="sc_skills_column column-1_1">
+                                                    <div class="sc_skills_item sc_skills_style_1 no-hover odd first no-padding">
+                                                        <canvas id="sc_skills_canvas_2"></canvas>
+                                                        <div class="sc_skills_total" data-start="0" data-stop="75" data-step="1" data-steps="100" data-max="100" data-speed="40" data-duration="3000" data-color="#689d01" data-bg_color="#121215" data-border_color="#121215" data-cutout="96" data-easing="easeOutCirc" data-ed="%">0%</div>
+                                                        <div class="avatar"><img src="assets/images/avatar.png" alt="avatar" /></div>
+                                                        <div class="level">7</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total">hypehr96</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Super ziomek</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table class="table-achievement">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="4">Achievment list</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="div-achievement">
+                                            <table class="table-achievement">
+                                                <tbody>
+                                                {% for i in 1..15 %}
+                                                <tr class="not-first">
+                                                    <td class="td-img">
+                                                        <img class="achievement-img" src="assets/images/achievement.png" alt="x" />
+                                                    </td>
+                                                    <td class="td-label" colspan="3">
+                                                        <div class="achievement-label">
+                                                            Ogniu krocz ze mną<br/>
+                                                            <small>Zdobyto: 19.10.2020 16:23</small>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="empty_space height_4em"></div>
+                            <h4 class="sc_title sc_title_regular margin_bottom_small">Stats</h4>
+                            <div class="column-1_4 sc_column_item sc_column_item_1 odd first">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon  icon-slideshare"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-start="0" data-stop="253" data-step="3" data-max="253" data-speed="16" data-duration="1349" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Trainings</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="column-1_4 sc_column_item sc_column_item_2 even">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon icon-iconmonstr-police-weapon-icon"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-start="0" data-stop="1200" data-step="12" data-max="1200" data-speed="22" data-duration="2200" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Shots</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="column-1_4 sc_column_item sc_column_item_3 odd">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon icon-iconmonstr-crosshair-7-icon"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-start="0" data-stop="534" data-step="5" data-max="534" data-speed="33" data-duration="3524" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Accuracy</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="column-1_4 sc_column_item sc_column_item_4 even">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon  icon-star-empty"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-start="0" data-stop="688" data-step="7" data-max="688" data-speed="13" data-duration="1278" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Points</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="empty_space height_4em"></div>
+                            <div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <h4 class="sc_title sc_title_regular margin_bottom_small">Ranking</h4>
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td> #</td>
+                                                <td> Column 1</td>
+                                                <td> Column 2</td>
+                                                <td> Column 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 1</td>
+                                                <td> Raw 1 cell 1</td>
+                                                <td> Raw 1 cell 2</td>
+                                                <td> Raw 1 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 2</td>
+                                                <td> Raw 2 cell 1</td>
+                                                <td> Raw 2 cell 2</td>
+                                                <td> Raw 2 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 3</td>
+                                                <td> Raw 3 cell 1</td>
+                                                <td> Raw 3 cell 2</td>
+                                                <td> Raw 3 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">...</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 69</td>
+                                                <td> Raw 4 cell 1</td>
+                                                <td> Raw 4 cell 2</td>
+                                                <td> Raw 4 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">...</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <h4 class="sc_title sc_title_regular margin_bottom_small">Top accuracy</h4>
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td> #</td>
+                                                <td> Column 1</td>
+                                                <td> Column 2</td>
+                                                <td> Column 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 1</td>
+                                                <td> Raw 1 cell 1</td>
+                                                <td> Raw 1 cell 2</td>
+                                                <td> Raw 1 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 2</td>
+                                                <td> Raw 2 cell 1</td>
+                                                <td> Raw 2 cell 2</td>
+                                                <td> Raw 2 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 3</td>
+                                                <td> Raw 3 cell 1</td>
+                                                <td> Raw 3 cell 2</td>
+                                                <td> Raw 3 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">...</td>
+                                            </tr>
+                                            <tr>
+                                                <td> 69</td>
+                                                <td> Raw 4 cell 1</td>
+                                                <td> Raw 4 cell 2</td>
+                                                <td> Raw 4 cell 3</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4">...</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="empty_space height_8em"></div>
+                </div>
+                <!-- /Counters -->
+            </section>
+        </article>
+    </div>
+    <!-- /Content -->
+</div>
+<!-- /Page Content -->
+{% endblock %}
