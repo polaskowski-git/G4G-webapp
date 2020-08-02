@@ -10,9 +10,10 @@ import { loggerMiddleware } from "./middlewares/logger.middleware";
 
 import { ConfigUtil } from "./utils/config.util";
 
+import "./controllers/dev.controller";
 import "./controllers/security.controller";
 import "./controllers/home.controller";
-import "./controllers/dev.controller";
+import "./controllers/dashboard.controller";
 import "./controllers/api/auth.controller";
 import "./controllers/api/training.controller";
 import "./controllers/api/weapon.controller";
