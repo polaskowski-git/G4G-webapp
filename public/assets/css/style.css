@@ -4960,6 +4960,9 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 .bg_dark_style_2{
 	background-color: #1c1d22 !important;
 }
+.bg_white_style{
+	background-color: #cccccc !important;
+}
 .book_now_section_bg{
 	background-image: url(http://placehold.it/1920x550.jpg);
 	background-position: center center;
@@ -4967,7 +4970,7 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 	background-repeat: no-repeat;
 }
 .custom_texture_bg1{
-	background-image: url(http://placehold.it/1920x850.jpg) !important;
+	background-image: url(/assets/images/stock/texture_001.jpg) !important;
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -4979,7 +4982,7 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 	background-repeat: no-repeat;
 }
 .custom_texture_bg3{
-	background-image: url(http://placehold.it/1920x515.jpg) !important;
+	background-image: url(/assets/images/stock/001.jpg) !important;
 	background-position: center center;
 	background-size: cover;
 	position: relative;
@@ -5008,7 +5011,7 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 }
 
 .custom_promo_bg1{
-	background-image:url(http://placehold.it/480x250.jpg);
+	background-image:url(/assets/images/stock/002.jpg);
 	width:53%;
 	left: 0;
 }
@@ -5612,4 +5615,8 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 .table-achievement .td-label {
     border-left: none;
     text-align: left;
+}
+
+.no-margin-bottom {
+	margin-bottom: 0 !important;
 }
