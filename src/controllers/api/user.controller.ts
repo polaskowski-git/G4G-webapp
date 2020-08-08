@@ -18,14 +18,14 @@ import ShotRepository from "../../repositories/shot.repository";
 import { checkAuthenticated } from "../../middlewares/auth.handler";
 import UserRepository from "../../repositories/user.repository";
 import User from "../../entities/user.entity";
-import { ProfileUpdateModel } from "../../models/user.models";
+import { ProfileUpdateModel, UserModel } from "../../models/user.models";
 import { ValidationErrorModel } from "../../models/validation.models";
 
 @ApiPath({
 	path: "/users",
 	name: "Users"
 })
-@controller("/api/users", checkAuthenticated)
+@controller("/api/users")
 export default class UserController extends BaseController {
     constructor(@inject(UserRepository) private _userRepository: UserRepository) {
         super();
@@ -42,7 +42,7 @@ export default class UserController extends BaseController {
 			APIKeyHeader: []
 		}
 	})
-	@httpGet("/profile")
+	@httpGet("/profile", checkAuthenticated)
 	public async getProfile(req: Request, res: Response) {
 		const user = req.user as User;
 
@@ -66,7 +66,7 @@ export default class UserController extends BaseController {
 			APIKeyHeader: []
 		}
 	})
-	@httpPut("/profile")
+	@httpPut("/profile", checkAuthenticated)
 	public async updateProfile(@request() req: Request, @response() res: Response) {
 		const user = req.user as User;
 		const data = new ProfileUpdateModel(req.body);
@@ -108,6 +108,84 @@ export default class UserController extends BaseController {
 			email: model.email,
 			password: model.password ? sha1(model.password) : undefined,
 			avatar: model.avatar
+		});
+
+		return user;
+	}
+
+	@ApiOperationPost({
+		path: "/",
+		parameters: {
+			body: {
+				model: UserModel.NAME
+			}
+		},
+		summary: "Create user",
+		responses: {
+			200: { model: User.NAME },
+			400: { model: ValidationErrorModel.NAME }
+		}
+	})
+	@httpPost("/")
+	public async create(req: Request, res: Response) {
+		const data = new UserModel(req.body);
+
+		const errors = await validate(data);
+
+		if(errors.length > 0) {
+			throw new ValidationException(errors);
+		}
+
+		const user = new User();
+		
+		await this.prepareUser(data, user);
+		
+		await this._userRepository.create(user);
+
+        res.json(await user.toJSON());
+	}
+
+	private async prepareUser(model: UserModel, user: User): Promise<User> {
+		const errs = [];
+
+		if (await this._userRepository.findOneByUsername(model.username)) {
+			const err = new ValidationError();						
+			err.property = "username";
+			err.constraints = {
+				username: "Username is already taken"
+			};
+
+			errs.push(err);
+		}
+
+		if (await this._userRepository.findOneByEmail(model.username)) {
+			const err = new ValidationError();						
+			err.property = "email";
+			err.constraints = {
+				username: "Email is already taken"
+			};
+			
+			errs.push(err);
+		}
+
+		if (model.password != model.repeatPassword) {
+			const err = new ValidationError();						
+			err.property = "password";
+			err.constraints = {
+				username: "The passwords must be identical"
+			};
+
+			errs.push(err);
+		}
+		
+		if (errs.length) {
+			throw new ValidationException(errs);
+		}
+
+		user.build({
+			username: model.username,
+			email: model.email,
+			password: sha1(model.password)
 		});
 
 		return user;

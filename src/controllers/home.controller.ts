@@ -9,8 +9,6 @@ export default class HomeController extends BaseController {
 	@httpGet("/")
 	public index(req: Request, res: Response) {
 
-		return this.render(res, "home.html.twig", {
-			app: CONFIG.APPLICATION
-		});
+		return this.render(res, "home.html.twig");
 	}
 }

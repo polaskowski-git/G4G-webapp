@@ -5,7 +5,7 @@ import { BaseModel } from "./base.model";
 import { ApiModelProperty } from "../constants/decorators";
 
 @ApiModel({
-	name: "ValidationError"
+	name: "ValidationErrorModel"
 })
 export class ValidationErrorModel extends BaseModel<ValidationErrorModel> {
 	public static readonly NAME = "ValidationErrorModel";

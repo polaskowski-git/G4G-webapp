@@ -58,20 +58,20 @@
                                         </div>
                                     </div><!-- /Logo --><!-- Contact Adress --><div class="column-1_5 contact_field contact_address invisible">
                                     <span class="contact_icon icon-iconmonstr-shipping-box-12-icon"></span>
-                                    <span class="contact_label contact_address_1">Free Shipping!</span>
-                                    <span class="contact_address_2">On order over $500.00</span>
-                                </div><!-- /Contact Adress --><!-- Contact Phone --><div class="column-1_5 contact_field contact_phone">
+                                    <span class="contact_label contact_address_1">!</span>
+                                    <span class="contact_address_2">0</span>
+                                </div><!-- /Contact Adress -->{% if app.user is defined and app.user is not null %}<div class="column-1_5 contact_field contact_cart float-right">
+                                    <a href="#" class="top_panel_cart_button">
+                                        <span class="contact_icon icon-user"></span>
+                                        <span class="contact_label contact_cart_label">Account:</span>
+                                        <span class="contact_address_2">{{ app.user.username }}</span>
+                                    </a>
+                                </div>{% endif %}<!-- Contact Phone --><div class="column-1_5 contact_field contact_phone float-right">
                                     
                                         <a href="index.html">
                                             <img src="assets/images/google-play.png" class="img-responsive" alt="" />
                                         </a>
-                                </div><!-- /Contact Phone --><div class="column-1_5 contact_field contact_cart">
-                                    <a href="#" class="top_panel_cart_button">
-                                        <span class="contact_icon icon-user"></span>
-                                        <span class="contact_label contact_cart_label">Account:</span>
-                                        <span class="contact_address_2">hypehr96</span>
-                                    </a>
-                                </div>
+                                </div><!-- /Contact Phone -->
                             </div>
                         </div>
                         <!-- /Top panel 1 -->
@@ -82,27 +82,28 @@
                                 <nav class="menu_main_nav_area">
                                     <ul class="menu_main_nav">
                                         <!-- Home -->
-                                        <li class="menu-item">
-                                            <a href="javascript:void(0);">Home</a>
+                                        <li class="menu-item {{ currentPage=="home" ? "current-menu-item" : "" }}">
+                                            <a href="/">Home</a>
                                         </li>
-                                        <li class="menu-item current-menu-item">
-                                            <a href="javascript:void(0);">Dashboard</a>
+                                        <li class="menu-item {{ currentPage=="dashboard" ? "current-menu-item" : "" }}">
+                                            <a href="/dashboard">Dashboard</a>
                                         </li>
-                                        <li class="menu-item">
-                                            <a href="javascript:void(0);">Training list</a>
+                                        <li class="menu-item {{ currentPage=="trainigs" ? "current-menu-item" : "" }}">
+                                            <a href="/trainings">Training list</a>
                                         </li>
-                                        <li class="menu-item">
-                                            <a href="javascript:void(0);">Contact us</a>
+                                        <li class="menu-item {{ currentPage=="contact" ? "current-menu-item" : "" }}">
+                                            <a href="/contact">Contact us</a>
                                         </li>
                                     </ul>
                                 </nav>
                                 <!-- Search -->
                                 <div class="search_wrap search_style_regular search_state_closed">
                                     <div class="search_form_wrap">
-                                        <form role="search" method="get" class="search_form" action="#">
-                                            <button type="submit" class="search_submit icon-iconmonstr-magnifier-2-icon" title="Open search"></button>
-                                            <input type="text" class="search_field" placeholder="Search" value="" name="s" />
-                                        </form>
+                                    {% if app.user is defined and app.user is not null %}
+                                    <a href="/logout" class="sc_button sc_button_style_dark" style="float: right; width: 75px;">Log out</a>
+                                    {% else %}
+                                    <a href="/login" class="sc_button sc_button_style_dark" style="float: right; width: 75px;">Sign in</a>
+                                    {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -481,6 +482,8 @@
         <script type="text/javascript" src="assets/js/vendor/swiper/swiper.min.js"></script>
 
         <script type="text/javascript" src="assets/js/diagram/chart.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/custom.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 

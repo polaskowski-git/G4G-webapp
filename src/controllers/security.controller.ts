@@ -2,19 +2,27 @@ import { Request, Response } from "express";
 import { controller, httpGet, httpPost } from "inversify-express-utils";
 
 import BaseController from "./base.controller";
-import { authorize } from "../middlewares/auth.handler";
+import { authorize, checkNotAuthenticated } from "../middlewares/auth.handler";
 
-@controller("/security")
+@controller("/")
 export default class SecurityController extends BaseController {
-	@httpGet("/login")
+	@httpGet("login", checkNotAuthenticated)
 	public login(req: Request, res: Response) {
-		return this.render(res, "auth/login.html.twig", {
-			error: req.flash("error")
+		return this.render(res, "security/login.html.twig", {
+			messages: {
+				error: req.flash("error")
+			}
 		});
 	}
 
-	@httpPost("/login", authorize)
+	@httpPost("login", authorize)
 	public loginCheck(req: Request, res: Response) {
+		return res.redirect('/dashboard');
+	}
+
+	@httpGet("logout")
+	public logout(req: Request, res: Response) {
+		req.logout();
 		return res.redirect('/');
 	}
 }

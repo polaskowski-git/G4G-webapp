@@ -1383,15 +1383,15 @@ textarea {
 }
 
 .scheme_original .top_panel_inner_style_3 .search_results .post_info a[class*="icon-"]:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_light .top_panel_inner_style_3 .search_results .post_info a[class*="icon-"]:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_dark .top_panel_inner_style_3 .search_results .post_info a[class*="icon-"]:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_original .top_panel_wrap .widget_shopping_cart ul.cart_list>li a {
@@ -1505,19 +1505,19 @@ textarea {
 .scheme_original .top_panel_inner_style_3 .menu_user_nav>li>a:hover,
 .scheme_original .top_panel_inner_style_4 .menu_user_nav>li>a:hover,
 .scheme_original .top_panel_inner_style_5 .menu_user_nav>li>a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_light .top_panel_inner_style_3 .menu_user_nav>li>a:hover,
 .scheme_light .top_panel_inner_style_4 .menu_user_nav>li>a:hover,
 .scheme_light .top_panel_inner_style_5 .menu_user_nav>li>a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_dark .top_panel_inner_style_3 .menu_user_nav>li>a:hover,
 .scheme_dark .top_panel_inner_style_4 .menu_user_nav>li>a:hover,
 .scheme_dark .top_panel_inner_style_5 .menu_user_nav>li>a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_original .menu_user_nav>li ul:not(.cart_list) {
@@ -1925,17 +1925,17 @@ textarea {
 
 .scheme_original .post_featured .post_header a:hover,
 .scheme_original .top_panel_over:not(.top_panel_fixed) .top_panel_style_7 .menu_main_nav>li>a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_light .post_featured .post_header a:hover,
 .scheme_light .top_panel_over:not(.top_panel_fixed) .top_panel_style_7 .menu_main_nav>li>a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_dark .post_featured .post_header a:hover,
 .scheme_dark .top_panel_over:not(.top_panel_fixed) .top_panel_style_7 .menu_main_nav>li>a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .menu_main_nav>li>a {
@@ -2713,7 +2713,7 @@ textarea {
 .scheme_original .top_panel_inner_style_3 .search_results .post_info a:hover>span,
 .scheme_original .top_panel_inner_style_3 .search_results .post_more:hover,
 .scheme_original .top_panel_inner_style_3 .search_results .search_results_close:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_light .top_panel_wrap_inner .search_results a:hover,
@@ -2731,7 +2731,7 @@ textarea {
 .scheme_light .top_panel_inner_style_3 .search_results .post_info a:hover>span,
 .scheme_light .top_panel_inner_style_3 .search_results .post_more:hover,
 .scheme_light .top_panel_inner_style_3 .search_results .search_results_close:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_dark .top_panel_wrap_inner .search_results a:hover,
@@ -2749,7 +2749,7 @@ textarea {
 .scheme_dark .top_panel_inner_style_3 .search_results .post_info a:hover>span,
 .scheme_dark .top_panel_inner_style_3 .search_results .post_more:hover,
 .scheme_dark .top_panel_inner_style_3 .search_results .search_results_close:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .top_panel_fixed .menu_main_wrap {
@@ -5495,27 +5495,27 @@ textarea {
 }
 
 .scheme_original .woocommerce .widget_price_filter .price_slider_amount .button:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light .woocommerce .widget_price_filter .price_slider_amount .button:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark .woocommerce .widget_price_filter .price_slider_amount .button:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original .woocommerce .widget_price_filter .price_slider_amount .button:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .woocommerce .widget_price_filter .price_slider_amount .button:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .woocommerce .widget_price_filter .price_slider_amount .button:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .woocommerce .widget_price_filter .price_slider_amount .button:hover {
@@ -5669,27 +5669,27 @@ textarea {
 }
 
 .scheme_original .woocommerce.widget_shopping_cart .buttons a:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light .woocommerce.widget_shopping_cart .buttons a:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark .woocommerce.widget_shopping_cart .buttons a:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original .woocommerce.widget_shopping_cart .buttons a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .woocommerce.widget_shopping_cart .buttons a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .woocommerce.widget_shopping_cart .buttons a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .woocommerce.widget_shopping_cart .buttons a:hover {
@@ -5825,27 +5825,27 @@ textarea {
 }
 
 .scheme_original .top_panel_wrap .woocommerce.widget_shopping_cart .buttons a:last-child:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light .top_panel_wrap .woocommerce.widget_shopping_cart .buttons a:last-child:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark .top_panel_wrap .woocommerce.widget_shopping_cart .buttons a:last-child:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original .top_panel_wrap .woocommerce.widget_shopping_cart .buttons a:last-child:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .top_panel_wrap .woocommerce.widget_shopping_cart .buttons a:last-child:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .top_panel_wrap .woocommerce.widget_shopping_cart .buttons a:last-child:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .woocommerce .quantity .qty,
@@ -6220,7 +6220,7 @@ textarea {
 .scheme_original .woocommerce-page #respond input#submit.alt:hover,
 .scheme_original .woocommerce-page #content input.button.alt:hover,
 .scheme_original .woocommerce-account .addresses .title .edit:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light .woocommerce a.button:hover,
@@ -6244,7 +6244,7 @@ textarea {
 .scheme_light .woocommerce-page #respond input#submit.alt:hover,
 .scheme_light .woocommerce-page #content input.button.alt:hover,
 .scheme_light .woocommerce-account .addresses .title .edit:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark .woocommerce a.button:hover,
@@ -6268,7 +6268,7 @@ textarea {
 .scheme_dark .woocommerce-page #respond input#submit.alt:hover,
 .scheme_dark .woocommerce-page #content input.button.alt:hover,
 .scheme_dark .woocommerce-account .addresses .title .edit:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original .woocommerce a.button:hover,
@@ -6292,7 +6292,7 @@ textarea {
 .scheme_original .woocommerce-page #respond input#submit.alt:hover,
 .scheme_original .woocommerce-page #content input.button.alt:hover,
 .scheme_original .woocommerce-account .addresses .title .edit:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .woocommerce a.button:hover,
@@ -6316,7 +6316,7 @@ textarea {
 .scheme_light .woocommerce-page #respond input#submit.alt:hover,
 .scheme_light .woocommerce-page #content input.button.alt:hover,
 .scheme_light .woocommerce-account .addresses .title .edit:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .woocommerce a.button:hover,
@@ -6340,7 +6340,7 @@ textarea {
 .scheme_dark .woocommerce-page #respond input#submit.alt:hover,
 .scheme_dark .woocommerce-page #content input.button.alt:hover,
 .scheme_dark .woocommerce-account .addresses .title .edit:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .woocommerce a.button:hover,
@@ -6669,32 +6669,32 @@ textarea {
 
 .scheme_original .woocommerce ul.products li.product .add_to_cart_button:hover,
 .scheme_original .woocommerce-page ul.products li.product .add_to_cart_button:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light .woocommerce ul.products li.product .add_to_cart_button:hover,
 .scheme_light .woocommerce-page ul.products li.product .add_to_cart_button:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark .woocommerce ul.products li.product .add_to_cart_button:hover,
 .scheme_dark .woocommerce-page ul.products li.product .add_to_cart_button:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original .woocommerce ul.products li.product .add_to_cart_button:hover,
 .scheme_original .woocommerce-page ul.products li.product .add_to_cart_button:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .woocommerce ul.products li.product .add_to_cart_button:hover,
 .scheme_light .woocommerce-page ul.products li.product .add_to_cart_button:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .woocommerce ul.products li.product .add_to_cart_button:hover,
 .scheme_dark .woocommerce-page ul.products li.product .add_to_cart_button:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .woocommerce a.remove:hover {
@@ -7418,27 +7418,27 @@ textarea {
 }
 
 .scheme_original #tribe-events-footer .tribe-events-sub-nav a:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light #tribe-events-footer .tribe-events-sub-nav a:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark #tribe-events-footer .tribe-events-sub-nav a:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original #tribe-events-footer .tribe-events-sub-nav a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light #tribe-events-footer .tribe-events-sub-nav a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark #tribe-events-footer .tribe-events-sub-nav a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original #tribe-events-footer .tribe-events-sub-nav a:hover {
@@ -7882,7 +7882,7 @@ button,
 .scheme_original input[type="button"]:hover,
 .scheme_original button:hover,
 .scheme_original .sc_button.sc_button_style_filled:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light input[type="submit"]:hover,
@@ -7890,7 +7890,7 @@ button,
 .scheme_light input[type="button"]:hover,
 .scheme_light button:hover,
 .scheme_light .sc_button.sc_button_style_filled:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark input[type="submit"]:hover,
@@ -7898,7 +7898,7 @@ button,
 .scheme_dark input[type="button"]:hover,
 .scheme_dark button:hover,
 .scheme_dark .sc_button.sc_button_style_filled:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original input[type="submit"]:hover,
@@ -7906,7 +7906,7 @@ button,
 .scheme_original input[type="button"]:hover,
 .scheme_original button:hover,
 .scheme_original .sc_button.sc_button_style_filled:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light input[type="submit"]:hover,
@@ -7914,7 +7914,7 @@ button,
 .scheme_light input[type="button"]:hover,
 .scheme_light button:hover,
 .scheme_light .sc_button.sc_button_style_filled:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark input[type="submit"]:hover,
@@ -7922,7 +7922,7 @@ button,
 .scheme_dark input[type="button"]:hover,
 .scheme_dark button:hover,
 .scheme_dark .sc_button.sc_button_style_filled:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .sc_button.sc_button_style_border {
@@ -8022,27 +8022,27 @@ button,
 }
 
 .scheme_original .sc_button.sc_button_style_dark:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light .sc_button.sc_button_style_dark:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark .sc_button.sc_button_style_dark:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original .sc_button.sc_button_style_dark:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .sc_button.sc_button_style_dark:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .sc_button.sc_button_style_dark:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .sc_button.sc_button_style_light {
@@ -11032,27 +11032,27 @@ button,
 }
 
 .scheme_original .sc_team.sc_team_style_team-3 .sc_socials_item a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_light .sc_team.sc_team_style_team-3 .sc_socials_item a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_dark .sc_team.sc_team_style_team-3 .sc_socials_item a:hover {
-    color: #fe8905
+    color: #689d01
 }
 
 .scheme_original .sc_team.sc_team_style_team-3 .sc_socials_item a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_light .sc_team.sc_team_style_team-3 .sc_socials_item a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_dark .sc_team.sc_team_style_team-3 .sc_socials_item a:hover {
-    border-color: #fe8905
+    border-color: #689d01
 }
 
 .scheme_original .sc_team.sc_team_style_team-3 .sc_team_item_avatar .sc_team_item_hover {
@@ -11518,15 +11518,15 @@ button,
 }
 
 .scheme_original #tribe-bar-form .tribe-bar-submit input[type=submit]:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_light #tribe-bar-form .tribe-bar-submit input[type=submit]:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_dark #tribe-bar-form .tribe-bar-submit input[type=submit]:hover {
-    background-color: #fe8905
+    background-color: #689d01
 }
 
 .scheme_original #tribe-events .tribe-events-button,
