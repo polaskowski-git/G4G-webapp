@@ -5633,6 +5633,10 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 	text-align: right !important;
 }
 
+.text-center {
+	text-align: center !important;
+}
+
 .has-error {
 	outline: 2px solid #df4d30 !important;
 }
@@ -5647,4 +5651,61 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 
 .sc_form .label_over label {
 	display: block !important;
+}
+
+.training-div {
+	padding-left: 96px !important;
+	cursor: pointer;
+}
+
+.training-div .icon-dropdown {
+    font-size: 38px;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: -58px;
+}
+
+.training-div .c-1 {
+	width: 33%;
+	float: left;
+	position: relative;
+}
+
+.training-div .c-2 {
+	width: 62%;
+    float: left;
+    padding: 15px;
+    text-align: right;
+}
+
+.training-stat {
+	position: relative;
+    display: inline-block;
+    color: white;
+    margin-left: 32px;
+}
+
+.training-stat i {
+    font-size: 24px;
+    margin-right: 8px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.training-stat span {    
+	display: inline-block;
+    margin-left: 32px;
+}
+
+.training-rounds {
+	float: left;
+    width: 96%;
+	margin-top: 32px;
+	display: none;
+}
+
+.text-grey {
+	color: #646464 !important;
 }
