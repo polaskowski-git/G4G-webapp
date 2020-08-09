@@ -5644,3 +5644,7 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 .float-right {
 	float: right !important;
 }
+
+.sc_form .label_over label {
+	display: block !important;
+}

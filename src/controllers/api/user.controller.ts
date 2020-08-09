@@ -83,7 +83,7 @@ export default class UserController extends BaseController {
 	}
 
 	private async prepareProfile(model: ProfileUpdateModel, user: User): Promise<User> {
-		if (await this._userRepository.findOneByUsername(model.username)) {
+		if (user.username != model.username && await this._userRepository.findOneByUsername(model.username)) {
 			const err = new ValidationError();						
 			err.property = "username";
 			err.constraints = {
@@ -93,7 +93,7 @@ export default class UserController extends BaseController {
 			throw new ValidationException([err]);
 		}
 
-		if (await this._userRepository.findOneByEmail(model.username)) {
+		if (user.email != model.email && await this._userRepository.findOneByEmail(model.username)) {
 			const err = new ValidationError();						
 			err.property = "email";
 			err.constraints = {
@@ -106,7 +106,7 @@ export default class UserController extends BaseController {
 		user.update({
 			username: model.username,
 			email: model.email,
-			password: model.password ? sha1(model.password) : undefined,
+			password: model.password && model.password != "" ? sha1(model.password) : undefined,
 			avatar: model.avatar
 		});
 

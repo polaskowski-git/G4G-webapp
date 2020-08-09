@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { controller, httpGet, httpPost } from "inversify-express-utils";
 
 import BaseController from "./base.controller";
-import { authorize, checkNotAuthenticated } from "../middlewares/auth.handler";
+import { authorize, checkNotAuthenticated, checkAuthenticated } from "../middlewares/auth.handler";
 
 @controller("/")
 export default class SecurityController extends BaseController {
@@ -24,5 +24,10 @@ export default class SecurityController extends BaseController {
 	public logout(req: Request, res: Response) {
 		req.logout();
 		return res.redirect('/');
+	}
+
+	@httpGet("profile", checkAuthenticated)
+	public profile(req: Request, res: Response) {
+		return this.render(res, "security/profile.html.twig");
 	}
 }

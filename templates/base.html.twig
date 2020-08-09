@@ -52,7 +52,7 @@
                                     <!-- Logo -->
                                     <div class="column-2_5 contact_logo">
                                         <div class="logo">
-                                            <a href="index.html">
+                                            <a href="/">
                                                 <img src="assets/images/logo.png" class="logo_main" alt="">
                                             </a>
                                         </div>
@@ -61,14 +61,14 @@
                                     <span class="contact_label contact_address_1">!</span>
                                     <span class="contact_address_2">0</span>
                                 </div><!-- /Contact Adress -->{% if app.user is defined and app.user is not null %}<div class="column-1_5 contact_field contact_cart float-right">
-                                    <a href="#" class="top_panel_cart_button">
+                                    <a href="/profile" onclick="location.href = '/profile';" class="top_panel_cart_button">
                                         <span class="contact_icon icon-user"></span>
                                         <span class="contact_label contact_cart_label">Account:</span>
                                         <span class="contact_address_2">{{ app.user.username }}</span>
                                     </a>
                                 </div>{% endif %}<!-- Contact Phone --><div class="column-1_5 contact_field contact_phone float-right">
                                     
-                                        <a href="index.html">
+                                        <a href="javascript:void(0);">
                                             <img src="assets/images/google-play.png" class="img-responsive" alt="" />
                                         </a>
                                 </div><!-- /Contact Phone -->
@@ -145,6 +145,9 @@
                                         <a href="/contact">Contact us</a>
                                     </li>
                                     {% if app.user is defined and app.user is not null %}
+                                    <li class="menu-item">
+                                        <a href="/profile">Profile</a>
+                                    </li>
                                     <li class="menu-item">
                                         <a href="/logout">Logout</a>
                                     </li>
