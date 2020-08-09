@@ -1,6 +1,8 @@
 {% extends './base.html.twig' %}
 
-{% set breadcrumbs = [{title: "Dashboard"}] %}
+{% set currentPage = "dashboard" %}
+
+{% set breadcrumbs = [{url: "/", title: "Home"}, {title: "Dashboard"}] %}
 
 {% block content %}
 <!-- Page Content -->

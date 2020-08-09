@@ -2,7 +2,7 @@ import passport from "passport";
 import { ForbiddenException } from "../constants/exceptions";
 
 export const authorize = passport.authenticate('local', {
-  failureRedirect: '/auth/login',
+  failureRedirect: '/login',
   failureFlash: "Invalid username or password."
 });
 

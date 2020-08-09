@@ -5617,6 +5617,30 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
     text-align: left;
 }
 
+.no-margin {
+	margin: 0 !important;
+}
+
 .no-margin-bottom {
 	margin-bottom: 0 !important;
+}
+
+.text-left {
+	text-align: left !important;
+}
+
+.text-right {
+	text-align: right !important;
+}
+
+.has-error {
+	outline: 2px solid #df4d30 !important;
+}
+
+.error-box {
+    padding: 12px 24px !important;
+}
+
+.float-right {
+	float: right !important;
 }

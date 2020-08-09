@@ -42,3 +42,37 @@ export class ProfileUpdateModel extends BaseModel<ProfileUpdateModel> {
 	@IsOptional()
     avatar?: string;
 }
+@ApiModel({
+	name: UserModel.NAME
+})
+export class UserModel extends BaseModel<UserModel> {
+	public static readonly NAME = "UserModel";
+
+	@ApiModelProperty({
+		required: true,
+		type: "string"
+	})
+	@IsString()
+    username: string;
+
+	@ApiModelProperty({
+		required: true,
+		type: "string"
+	})
+	@IsEmail()
+    email: string;
+
+	@ApiModelProperty({
+		required: true,
+		type: "string"
+	})
+	@IsString()
+    password: string;
+
+	@ApiModelProperty({
+		required: true,
+		type: "string"
+	})
+	@IsString()
+    repeatPassword: string;
+}

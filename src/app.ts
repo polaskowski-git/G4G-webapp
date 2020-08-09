@@ -157,7 +157,7 @@ class App {
 		const _userRepository = this.container.get(UserRepository);
 		passport.use(new Strategy(
 			function(username, password, done) {
-				_userRepository.findOneByUsername(username).then(user => {
+				_userRepository.findOneByUsernameOrEmail(username).then(user => {
 					if (!user) { return done(null, false); }
 					if (!user.verifyPassword(password)) { return done(null, false); }
 					return done(null, user);

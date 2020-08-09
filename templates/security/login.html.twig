@@ -1,0 +1,95 @@
+{% extends '../base.html.twig' %}
+
+{% set breadcrumbs = [{url: "/", title: "Home"}, {title: "Login"}] %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="page_content_wrap page_paddings_yes">
+    <!-- Content -->
+    <div class="content_wrap">
+        <div class="content">
+            <div class="woocommerce">
+                <div class="col2-set" id="customer_details">
+                    <!-- Billing Details -->
+                    <div class="col-1">
+                        <div class="woocommerce-billing-fields">
+                            <h3>Sign in</h3>
+                            {% if messages.error %}
+                                <div class="sc_infobox sc_infobox_style_error sc_infobox_closeable sc_infobox_iconed icon-cancel-1">
+                                    <p>{{ messages.error }}</p>
+                                </div>
+                            {% endif %}
+                            <form id="login-form" class="sc_form" action="/login" method="POST">
+                                <div class="sc_form_field label_over">
+                                    <label class="required" for="sc_form_username">Username</label>
+                                    <input type="text" name="username" placeholder="Username">
+                                </div>
+                                <div class="empty_space height_1em"></div>
+                                <div class="sc_form_field label_over">
+                                    <label class="required" for="sc_form_username">Password</label>
+                                    <input type="password" name="password" placeholder="Password" autocomplete="new-password">
+                                </div>
+                                <div class="empty_space height_1em"></div>
+                                <div class="sc_form_button text-right no-margin">
+                                    <button class="sc_button sc_button_style_dark">Sign in</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /Billing Details -->
+                    <!-- Additional Information -->
+                    <div class="col-2">
+                        <div class="woocommerce-shipping-fields">
+                        </div>
+                        <div class="woocommerce-additional-fields">
+                            <h3>Sign up</h3>
+                            <form id="register-form" class="sc_form ajax-form" action="/api/users" method="POST">
+                                <div class="sc_form_field label_over">
+                                    <label class="required" for="sc_form_username">E-mail</label>
+                                    <input type="email" name="email" placeholder="E-mail">
+                                </div>
+                                <div class="empty_space height_1em"></div>
+                                <div class="sc_form_field label_over">
+                                    <label class="required" for="sc_form_username">Username</label>
+                                    <input type="text" name="username" placeholder="Username">
+                                </div>
+                                <div class="empty_space height_1em"></div>
+                                <div class="sc_form_field label_over">
+                                    <label class="required" for="sc_form_username">Password</label>
+                                    <input type="password" name="password" placeholder="Password" autocomplete="new-password">
+                                </div>
+                                <div class="empty_space height_1em"></div>
+                                <div class="sc_form_field label_over">
+                                    <label class="required" for="sc_form_username">Repeat password</label>
+                                    <input type="password" name="repeatPassword" placeholder="Repeat password" autocomplete="new-password">
+                                </div>
+                                <div class="empty_space height_1em"></div>
+                                <div class="sc_form_button text-right no-margin">
+                                    <button class="sc_button sc_button_style_dark">Sign up</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /Additional Information -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Content -->
+</div>
+<!-- /Page Content -->
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $(function() {
+        $("#register-form").on("ajaxSendSuccess", function() {
+            const $registerForm = $("#register-form");
+            const $loginForm = $("#login-form");
+            $loginForm.find(`[name="username"]`).val($registerForm.find(`[name="username"]`).val());
+            $loginForm.find(`[name="password"]`).val($registerForm.find(`[name="password"]`).val());
+            $loginForm.submit();
+        });
+    });
+</script>
+{% endblock %}

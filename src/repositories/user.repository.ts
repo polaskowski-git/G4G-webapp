@@ -16,6 +16,15 @@ export default class UserRepository extends BaseRepository<User> {
         });
     }
 
+    public async findOneByUsernameOrEmail(usernameOrEmail: string) {
+        return await this.repository
+            .createQueryBuilder("u")
+            .select("u")
+            .where("u.username = :usernameOrEmail", { usernameOrEmail })
+            .orWhere("u.email = :usernameOrEmail", { usernameOrEmail })
+            .getOne();
+    }
+
     public async findOneByEmail(email: string) {
         return this.repository.findOne({
             where: {
