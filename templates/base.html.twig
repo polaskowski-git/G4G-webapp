@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en-US" class="scheme_original">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="format-detection" content="telephone=no">
+
+        <title>green4go &#8211; aplikacja do treningów strzeleckich</title>
+
+        <link rel="stylesheet" href="assets/js/vendor/woocommerce/css/woocommerce-layout.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/js/vendor/woocommerce/css/woocommerce-smallscreen.css" type="text/css" media="only screen and (max-width: 768px)" />
+        <link rel="stylesheet" href="assets/js/vendor/woocommerce/css/woocommerce.css" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="assets/js/vendor/revslider/css/settings.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/css/tpl-revslider.css" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind:300,400,700%7CLato:300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext">
+        <link rel="stylesheet" href="assets/css/fontello/css/fontello.css" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/css/animation.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/css/shortcodes.css" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="assets/css/plugin.woocommerce.css" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="assets/css/skin.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/css/responsive.css" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="assets/css/messages.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/js/vendor/magnific/magnific-popup.min.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="assets/js/vendor/swiper/swiper.min.css" type="text/css" media="all" />
+
+        <link rel="icon" href="http://placehold.it/32x32.jpg" sizes="32x32" />
+        <link rel="icon" href="http://placehold.it/192x192.jpg" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="http://placehold.it/180x180.jpg" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body class="body_filled article_style_stretch scheme_original top_panel_show top_panel_above sidebar_hide">
+        <div id="page_preloader"></div>
+        <!-- Body wrap -->
+        <div class="body_wrap">
+            <!-- Page wrap -->
+            <div class="page_wrap">
+                <!-- Header -->
+                <header class="top_panel_wrap top_panel_style_1 scheme_original">
+                    <div class="top_panel_wrap_inner top_panel_inner_style_1 top_panel_position_above">
+                        <!-- Top panel 1 -->
+                        <div class="top_panel_middle">
+                            <div class="content_wrap">
+                                <div class="columns_wrap columns_fluid">
+                                    <!-- Logo -->
+                                    <div class="column-2_5 contact_logo">
+                                        <div class="logo">
+                                            <a href="/">
+                                                <img src="assets/images/logo.png" class="logo_main" alt="">
+                                            </a>
+                                        </div>
+                                    </div><!-- /Logo --><!-- Contact Adress --><div class="column-1_5 contact_field contact_address invisible">
+                                    <span class="contact_icon icon-iconmonstr-shipping-box-12-icon"></span>
+                                    <span class="contact_label contact_address_1">!</span>
+                                    <span class="contact_address_2">0</span>
+                                </div><!-- /Contact Adress -->{% if app.user is defined and app.user is not null %}<div class="column-1_5 contact_field contact_cart float-right">
+                                    <a href="/profile" onclick="location.href = '/profile';" class="top_panel_cart_button">
+                                        <span class="contact_icon icon-user"></span>
+                                        <span class="contact_label contact_cart_label">Account:</span>
+                                        <span class="contact_address_2">{{ app.user.username }}</span>
+                                    </a>
+                                </div>{% endif %}<!-- Contact Phone --><div class="column-1_5 contact_field contact_phone float-right">
+                                    
+                                        <a href="javascript:void(0);">
+                                            <img src="assets/images/google-play.png" class="img-responsive" alt="" />
+                                        </a>
+                                </div><!-- /Contact Phone -->
+                            </div>
+                        </div>
+                        <!-- /Top panel 1 -->
+                        <!-- Top panel 2 -->
+                        <div class="top_panel_bottom">
+                            <div class="content_wrap clearfix">
+                                <!-- Menu -->
+                                <nav class="menu_main_nav_area">
+                                    <ul class="menu_main_nav">
+                                        <!-- Home -->
+                                        <li class="menu-item {{ currentPage=="home" ? "current-menu-item" : "" }}">
+                                            <a href="/">Home</a>
+                                        </li>
+                                        <li class="menu-item {{ currentPage=="dashboard" ? "current-menu-item" : "" }}">
+                                            <a href="/dashboard">Dashboard</a>
+                                        </li>
+                                        <li class="menu-item {{ currentPage=="trainigs" ? "current-menu-item" : "" }}">
+                                            <a href="/trainings">Training list</a>
+                                        </li>
+                                        <li class="menu-item {{ currentPage=="contact" ? "current-menu-item" : "" }}">
+                                            <a href="/contact">Contact us</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- Search -->
+                                <div class="search_wrap search_style_regular search_state_closed">
+                                    <div class="search_form_wrap">
+                                    {% if app.user is defined and app.user is not null %}
+                                    <a href="/logout" class="sc_button sc_button_style_dark" style="float: right; width: 75px;">Log out</a>
+                                    {% else %}
+                                    <a href="/login" class="sc_button sc_button_style_dark" style="float: right; width: 75px;">Sign in</a>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Top panel 2 -->
+                    </div>
+                </header>
+                <!-- /Header -->
+                <!-- Header Mobile -->
+                <div class="header_mobile">
+                    <div class="content_wrap">
+                        <div class="menu_button icon-menu"></div>
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="assets/images/logo.png" class="logo_main" alt="">
+                            </a>
+                        </div>
+                        <!-- /Logo -->
+                    </div>
+                    <!-- Side wrap -->
+                    <div class="side_wrap">
+                        <div class="close">Close</div>
+                        <!-- Top panel -->
+                        <div class="panel_top">
+                            <!-- Menu -->
+                            <nav class="menu_main_nav_area">
+                                <ul class="menu_main_nav">
+                                    <li class="menu-item {{ currentPage=="home" ? "current-menu-item" : "" }}">
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li class="menu-item {{ currentPage=="dashboard" ? "current-menu-item" : "" }}">
+                                        <a href="/dashboard">Dashboard</a>
+                                    </li>
+                                    <li class="menu-item {{ currentPage=="trainigs" ? "current-menu-item" : "" }}">
+                                        <a href="/trainings">Training list</a>
+                                    </li>
+                                    <li class="menu-item {{ currentPage=="contact" ? "current-menu-item" : "" }}">
+                                        <a href="/contact">Contact us</a>
+                                    </li>
+                                    {% if app.user is defined and app.user is not null %}
+                                    <li class="menu-item">
+                                        <a href="/profile">Profile</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/logout">Logout</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="menu-item">
+                                        <a href="/login">Sign in</a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="/login">Sign up</a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                            <!-- /Menu -->
+                        </div>
+                        <!-- /Top panel -->
+                        <!-- Middle panel -->
+                        <div class="panel_middle">
+                            <div class="contact_field contact_address">
+                                <span class="contact_icon icon-home"></span>
+                                <span class="contact_label contact_address_1">Chicago, IL 60606</span>
+                                <span class="contact_address_2">123, New Lenox</span>
+                            </div>
+                            <div class="contact_field contact_phone">
+                                <span class="contact_icon icon-phone"></span>
+                                <span class="contact_label contact_phone">23-456-789</span>
+                                <span class="contact_email">admin@mail.com</span>
+                            </div>
+                        </div>
+                        <!-- /Middle panel -->
+                        <!-- Bottom panel -->
+                        <div class="panel_bottom">
+                            <div class="contact_socials">
+                                <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny">
+                                    <div class="sc_socials_item">
+                                        <a href="javascript:void(0);" class="social_icons social_facebook">
+                                            <span class="icon-facebook"></span>
+                                        </a>
+                                    </div>
+                                    <div class="sc_socials_item">
+                                        <a href="javascript:void(0);" class="social_icons social_gplus">
+                                            <span class="icon-gplus"></span>
+                                        </a>
+                                    </div>
+                                    <div class="sc_socials_item">
+                                        <a href="javascript:void(0);" class="social_icons social_twitter">
+                                            <span class="icon-twitter"></span>
+                                        </a>
+                                    </div>
+                                    <div class="sc_socials_item">
+                                        <a href="javascript:void(0);" class="social_icons social_linkedin">
+                                            <span class="icon-linkedin"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Bottom panel -->
+                    </div>
+                    <!-- /Side wrap -->
+                    <div class="mask"></div>
+                </div>
+                <!-- /Header Mobile -->
+                {% if breadcrumbs is defined and breadcrumbs|length > 0 %}
+                <!-- Breadcrumbs -->
+                <div class="top_panel_title top_panel_style_1 title_present breadcrumbs_present scheme_original">
+                    <div class="top_panel_title_inner top_panel_inner_style_1">
+                        <div class="content_wrap">
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="top_panel_title top_panel_style_1 title_present breadcrumbs_present scheme_original">
+                    <div class="top_panel_title_inner top_panel_inner_style_1">
+                        <div class="content_wrap">
+                            <h1 class="page_title">{{ breadcrumbs|last.title }}</h1>
+                            <div class="breadcrumbs">
+                            {% for breadcrumb in breadcrumbs %}
+                                {% if breadcrumb.url is defined %}
+                                    <a class="breadcrumbs_item home" href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
+                                {% else %}
+                                    <span class="breadcrumbs_item current">{{ breadcrumb.title }}</span>
+                                {% endif %}
+                                {% if not loop.last %}
+                                    <span class="breadcrumbs_delimiter"></span>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Breadcrumbs -->
+                {% endif %}
+
+                {% block content %}{% endblock %}
+                 <!-- Clients -->
+                <div class="custom_texture_bg2">
+                    <div class="content_wrap">
+                        <div class="empty_space height_5em"></div>
+                        <div class="sc_clients_wrap">
+                            <div class="sc_clients sc_clients_style_clients-1">
+                                <div class="sc_slider_swiper swiper-slider-container sc_slider_nopagination sc_slider_nocontrols" data-interval="5064" data-slides-per-view="7">
+                                    <div class="slides swiper-wrapper">
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div  class="sc_clients_item sc_clients_item_1 odd first">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div class="sc_clients_item sc_clients_item_2 even">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div class="sc_clients_item sc_clients_item_3 odd">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div class="sc_clients_item sc_clients_item_4 even">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div  class="sc_clients_item sc_clients_item_5 odd">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div class="sc_clients_item sc_clients_item_6 even">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide" data-style="width:100%;">
+                                            <div class="sc_clients_item sc_clients_item_7 odd">
+                                                <div class="sc_client_image">
+                                                    <img alt="" src="http://placehold.it/234x88.jpg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sc_slider_controls_wrap">
+                                        <a class="sc_slider_prev" href="#"></a>
+                                        <a class="sc_slider_next" href="#"></a>
+                                    </div>
+                                    <div class="sc_slider_pagination_wrap"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="empty_space height_5em"></div>
+                    </div>
+                </div>
+                <!-- /Clients -->
+                <!-- Footer 2-->
+                <footer class="contacts_wrap scheme_original">
+                    <div class="contacts_wrap_inner">
+                        <div class="content_wrap">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="javascript:void(0);">
+                                    <img src="assets/images/logo.png" class="logo_footer" alt="">
+                                </a>
+                            </div>
+                            <!-- /Logo -->
+                            <!-- Contact Adress -->
+                            <div class="contacts_address">
+                                <address class="address_right">
+                                    <p>Phone: 23-456-789</p>
+                                    <p>Fax: 098-765-432</p>
+                                </address>
+                                <address class="address_left">
+                                    <p>123, New Lenox</p>
+                                    <p>Chicago, IL 60606</p>
+                                </address>
+                            </div>
+                            <!-- /Contact Adress -->
+                            <!-- Socials -->
+                            <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_medium">
+                                <div class="sc_socials_item">
+                                    <a href="javascript:void(0);" class="social_icons social_facebook">
+                                        <span class="icon-facebook"></span>
+                                    </a>
+                                </div>
+                                <div class="sc_socials_item">
+                                    <a href="javascript:void(0);" class="social_icons social_gplus">
+                                        <span class="icon-gplus"></span>
+                                    </a>
+                                </div>
+                                <div class="sc_socials_item">
+                                    <a href="javascript:void(0);" class="social_icons social_twitter">
+                                        <span class="icon-twitter"></span>
+                                    </a>
+                                </div>
+                                <div class="sc_socials_item">
+                                    <a href="javascript:void(0);" class="social_icons social_linkedin">
+                                        <span class="icon-linkedin"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /Socials -->
+                        </div>
+                    </div>
+                </footer>
+                <!-- /Footer 2-->
+                <!-- Copyright -->
+                <div class="copyright_wrap copyright_style_text  scheme_original">
+                    <div class="copyright_wrap_inner">
+                        <div class="content_wrap">
+                            <div class="copyright_text">
+                                <a href="javascript:void(0);">green4go</a> &copy; 2020 All Rights Reserved. <a href="javascript:void(0);">Terms of Use</a> and <a href="javascript:void(0);">Privacy Policy</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Copyright -->
+            </div>
+            <!-- /Page wrap -->
+        </div>
+        <!-- /Body wrap -->
+
+        <a href="#" class="scroll_to_top icon-up" title="Scroll to top"></a>
+
+        <script type="text/javascript" src="assets/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="assets/js/jquery/jquery-migrate.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/_main.js"></script>
+        <script type="text/javascript" src="assets/js/trx_utils.min.js"></script>
+        <script type="text/javascript" src="assets/js/_packed.js"></script>
+
+        <script type="text/javascript" src="assets/js/vendor/essential-grid/js/lightbox.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/essential-grid/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/revslider/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/revslider/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/revslider/js/extensions/revolution.extension.actions.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/revslider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/revslider/js/extensions/revolution.extension.navigation.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/tpl-revslider-general.js"></script>
+        <script type="text/javascript" src="assets/js/tpl-revslider-2.js"></script>
+
+        <script type="text/javascript" src="assets/js/vendor/photostack/modernizr.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/superfish.js"></script>
+
+        <script type="text/javascript" src="assets/js/utils.js"></script>
+        <script type="text/javascript" src="assets/js/core.init.js"></script>
+        <script type="text/javascript" src="assets/js/init.js"></script>
+
+        <script type="text/javascript" src="assets/js/shortcodes.js"></script>
+        <script type="text/javascript" src="assets/js/messages.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/magnific/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="assets/js/vendor/swiper/swiper.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/diagram/chart.min.js"></script>
+
+        <script type="text/javascript" src="assets/js/custom.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+
+</html>
