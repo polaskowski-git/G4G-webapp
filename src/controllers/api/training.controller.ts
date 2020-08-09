@@ -16,6 +16,7 @@ import RoundRepository from "../../repositories/round.repository";
 import ShotRepository from "../../repositories/shot.repository";
 import { checkAuthenticated } from "../../middlewares/auth.handler";
 import { ValidationErrorModel } from "../../models/validation.models";
+import User from "../../entities/user.entity";
 
 @ApiPath({
 	path: "/trainings",
@@ -40,7 +41,7 @@ export default class TrainingController extends BaseController {
 	})
 	@httpGet("/")
 	public async list(req: Request, res: Response) {
-		const trainings = await this._trainingRepository.findBy({});
+		const trainings = await this._trainingRepository.findByUser(req.user as User);
 
         res.json(await Promise.all(trainings.map(w => w.toJSON())));
 	}

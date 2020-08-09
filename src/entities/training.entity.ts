@@ -5,6 +5,7 @@ import { BaseEntity } from "./base.entity";
 import User from "./user.entity";
 import Round from "./round.entity";
 import { ApiModelProperty } from "../constants/decorators";
+import { TrainingModel } from "../models/training.models";
 
 @Entity({
 	name: "trainings"
@@ -67,13 +68,30 @@ export default class Training extends BaseEntity<Training> {
 	earnedXp: number;
 
 	public async toJSON() {
+		const rounds = (await this.rounds) || [];
+		
+		let avgAccuracy = 0, avgPrecision = 0, sumPoints = 0;
+		if (rounds.length) {
+			for (const round of rounds) {
+				avgAccuracy += parseFloat(round.accuracy+"") || 0;
+				avgPrecision += parseFloat(round.precision+"") || 0;
+				sumPoints += parseInt(round.points+"") || 0;
+			}
+
+			avgAccuracy /= rounds.length;
+			avgPrecision /= rounds.length;
+		}
+
 		return {
 			id: this.id,
-			rounds: await Promise.all(((await this.rounds) || []).map(async r => await r.toJSON())),
+			rounds: await Promise.all(rounds.map(async r => await r.toJSON())),
 			name: this.name,
 			startDateTime: this.startDateTime,
 			endDateTime: this.endDateTime,
-			earnedXp: this.earnedXp
+			earnedXp: this.earnedXp,
+			avgAccuracy,
+			avgPrecision,
+			sumPoints
 		};
 	}
 }

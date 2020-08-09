@@ -14,6 +14,7 @@ import "./controllers/dev.controller";
 import "./controllers/security.controller";
 import "./controllers/home.controller";
 import "./controllers/dashboard.controller";
+import "./controllers/trainings.controller";
 import "./controllers/api/auth.controller";
 import "./controllers/api/training.controller";
 import "./controllers/api/weapon.controller";

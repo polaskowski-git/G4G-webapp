@@ -49,6 +49,24 @@ export class TrainingModel extends BaseModel<TrainingModel> {
 	})
 	@IsInt()
 	earnedXp: number;
+
+	@ApiModelProperty({
+		required: false,
+		type: "number"
+	})
+	avgAccuracy?: number;
+
+	@ApiModelProperty({
+		required: false,
+		type: "number"
+	})
+	avgPrecision?: number;
+
+	@ApiModelProperty({
+		required: false,
+		type: "number"
+	})
+	sumPoints?: number;
 	
 	public build(options: Partial<TrainingModel>) {
 		super.build(options);
