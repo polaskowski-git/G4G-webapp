@@ -1,0 +1,153 @@
+{% extends '../base.html.twig' %}
+
+{% set currentPage = "trainings" %}
+
+{% set breadcrumbs = [{url: "/", title: "Home"}, {title: "Trainings"}] %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="page_content_wrap page_paddings_no">
+    <!-- Content -->
+    <div class="content">
+        <article class="post_item post_item_single">
+            <section class="post_content">
+                <div class="content_wrap">
+                    <div class="empty_space height_3em"></div>
+                    <div id="training-prototype" class="hide">
+                        <div class="empty_space height_1em"></div>
+                        <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                            <div class="sc_table sc_skills_item sc_skills_style_1 odd first text-left training-div">
+                                <div class="c-1"> 
+                                    <i class="icon-dropdown icon-double-down"> </i>
+                                    <h4 class="sc_title sc_title_regular margin_bottom_null">__NAME__</h4>
+                                    <span>__DATE__</span>
+                                </div>
+                                <div class="c-2">
+                                    <div class="training-stat" title="Accuracy">
+                                        <i class="icon-iconmonstr-crosshair-7-icon"> </i>
+                                        <span>__ACCURACY__</span>
+                                    </div>
+                                    <div class="training-stat" title="Precision">
+                                        <i class="icon-iconmonstr-target-icon"> </i>
+                                        <span>__PRECISION__</span>
+                                    </div>
+                                    <div class="training-stat" title="Score">
+                                        <i class="icon-star-empty"> </i>
+                                        <span>__SCORE__</span>
+                                    </div>
+                                </div>
+                                <div class="training-rounds">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>Round</td>
+                                                <td>Weapon</td>
+                                                <td>Shots</td>
+                                                <td>Accuracy</td>
+                                                <td>Precision</td>
+                                                <td>Score</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="training-list" class="text-center">
+                        <div class="empty_space height_3em"></div>
+                            <h4 class="sc_title sc_title_regular margin_bottom_null text-grey">No records available</h4>
+                        <div class="empty_space height_3em"></div>
+                    </div>
+                    <div class="empty_space height_3em"></div>
+                </div>
+            </section>
+        </article>
+    </div>
+    <!-- /Content -->
+</div>
+<!-- /Page Content -->
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+const $trainigPrototype = $("#training-prototype");
+const $trainigList = $("#training-list");
+
+function formatDate(startDate, endDate) {
+	return `${startDate.getFullYear()}-${padStart(startDate.getMonth() + 1)}-${padStart(startDate.getDate())} ${padStart(startDate.getHours())}:${padStart(startDate.getMinutes())} - ${padStart(endDate.getHours())}:${padStart(endDate.getMinutes())}`;
+	
+}
+
+function loadData() {;
+        
+    loader(true);
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/trainings"
+    }).done(function(data){
+        if (data.length) {
+            $trainigList.html("");
+            for (const trainig of data) {
+                const $trainig = $trainigPrototype.clone();
+
+                $trainig.html(
+                    $trainig.html()
+                        .split("__NAME__")
+                        .join(trainig.name)
+                        .split("__DATE__")
+                        .join(formatDate(new Date(trainig.startDateTime), new Date(trainig.endDateTime)))
+                        .split("__ACCURACY__")
+                        .join(trainig.avgAccuracy)
+                        .split("__PRECISION__")
+                        .join(trainig.avgPrecision)
+                        .split("__SCORE__")
+                        .join(trainig.sumPoints)
+                );
+                $trainig.attr("id", null);
+                $trainig.removeClass("hide");
+
+                const $rounds = $trainig.find(".training-rounds tbody");
+
+                let lp = 1;
+                for (const round of trainig.rounds) {
+                    $rounds.append($(`
+                        <tr>
+                            <td>${lp++}</td>
+                            <td>${round.weapon.model}</td>
+                            <td>${round.shots.length}</td>
+                            <td>${round.accuracy}</td>
+                            <td>${round.precision}</td>
+                            <td>${round.points}</td>
+                        </tr>
+                    `));
+                }
+
+                $trainigList.append($trainig);
+            }
+
+            loader(false);
+        }
+    });
+}
+
+$(function() {
+    loadData();
+    $(document).on("click", ".training-div", function(){
+        const $rounds = $(this).find(".training-rounds");
+        const $icon = $(this).find(".icon-dropdown");
+        if ($rounds.is(':visible')) {
+            $rounds.slideUp("slow");
+            $icon.removeClass("icon-double-up");
+            $icon.addClass("icon-double-down");
+        } else {
+            $rounds.slideDown("slow");
+            $icon.removeClass("icon-double-down");
+            $icon.addClass("icon-double-up");
+        }
+    });
+});
+</script>
+{% endblock %}
