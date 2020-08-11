@@ -16,6 +16,7 @@
   "author": "Andrzejewski Kamil",
   "license": "ISC",
   "dependencies": {
+    "@types/nodemailer": "^6.4.0",
     "class-validator": "^0.12.2",
     "connect": "^3.7.0",
     "connect-flash": "^0.1.1",
@@ -29,6 +30,7 @@
     "inversify-express-utils": "^6.3.2",
     "lodash": "^4.17.19",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.4.11",
     "passport": "^0.4.1",
     "passport-headerapikey": "^1.2.1",
     "passport-local": "^1.0.0",

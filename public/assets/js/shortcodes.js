@@ -1062,12 +1062,18 @@ function kingler_template_sc_form_validate(form){
 			data: form.serialize()
 		}).done(function(response) {
 			"use strict";
+			if (url == "/contact") {
+				form.find('button').prop("disabled", true);
+				alert("Your message successfully sent")
+				return;
+			}
+
 			var rez = {};
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
 				rez = { error: KINGLER_TEMPLATE_STORAGE['ajax_error'] };
-				console.log(response);
+				// console.log(response);
 			}
 			var result = form.find(".result").toggleClass("sc_infobox_style_error", false).toggleClass("sc_infobox_style_success", false);
 			if (rez.error === '') {

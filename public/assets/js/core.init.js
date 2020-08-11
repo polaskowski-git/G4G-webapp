@@ -1702,7 +1702,7 @@ function kingler_template_sc_form_validate(form){
 				rez = JSON.parse(response);
 			} catch (e) {
 				rez = { error: KINGLER_TEMPLATE_STORAGE['ajax_error'] };
-				console.log(response);
+				// console.log(response);
 			}
 			var result = form.find(".result").toggleClass("sc_infobox_style_error", false).toggleClass("sc_infobox_style_success", false);
 			if (rez.error === '') {
