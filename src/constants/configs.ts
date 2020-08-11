@@ -23,9 +23,18 @@ export class CONFIG {
 	public static DATABASE = {
 		HOST: process.env["DATABASE.HOST"] || "",
 		DATABASE: process.env["DATABASE.DATABASE"] || "",
-		PORT: Number(process.env["DATABASE.DATABASE"]) || 3306,
+		PORT: Number(process.env["DATABASE.PORT"]) || 3306,
 		USERNAME: process.env["DATABASE.USERNAME"] || "",
 		PASSWORD: process.env["DATABASE.PASSWORD"] || ""
+	};
+
+	public static MAILER = {
+		TRANSPORT: process.env["MAILER.TRANSPORT"] || "",
+		USER: process.env["MAILER.USER"] || "",
+		PASSWORD: process.env["MAILER.PASSWORD"] || "",
+		HOST: process.env["MAILER.HOST"] || "",
+		PORT: Number(process.env["MAILER.PORT"]) || 2525,
+		FROM: process.env["MAILER.FROM"] || ""
 	};
 
     public static DEFAULTS = {
