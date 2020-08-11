@@ -1,0 +1,101 @@
+{% extends './base.html.twig' %}
+
+{% set currentPage = "contact" %}
+
+{% set breadcrumbs = [{url: "/", title: "Home"}, {title: "Contact"}] %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="page_content_wrap page_paddings_no">
+    <!-- Content -->
+    <div class="content">
+        <article class="post_item post_item_single">
+            <section class="post_content">
+                <!-- Contact Us Today -->
+                <div class="content_wrap">
+                    <div class="empty_space height_6_75em"></div>
+                    <div id="sc_form_2_wrap" class="sc_form_wrap">
+                        <div id="sc_form_2" class="sc_form sc_form_style_form_2">
+                            <h2 class="sc_form_title sc_item_title">
+                                Contact
+                                <span class="thin"> Us Today</span>
+                            </h2>
+                            <div class="sc_form_descr sc_item_descr">
+                                <p class="margin_bottom_null">Your email address will not be published.</p>
+                                <p> Required fields are marked *</p>
+                            </div>
+                            <div class="sc_columns columns_wrap">
+                                <div class="sc_form_address column-1_3">
+                                    {# <div class="sc_form_address_field">
+                                        <span class="sc_form_address_label">Address</span>
+                                        <span class="sc_form_address_data">Chicago, IL 60606, 123, New Lenox</span>
+                                    </div>
+                                    <div class="sc_form_address_field">
+                                        <span class="sc_form_address_label">We are open</span>
+                                        <span class="sc_form_address_data">Mon - Sat 8.00 - 18.00</span>
+                                    </div> #}
+                                    <div class="sc_form_address_field">
+                                        <span class="sc_form_address_label">Phone</span>
+                                        <span class="sc_form_address_data">23-456-789, 098-765-432</span>
+                                    </div>
+                                    <div class="sc_form_address_field">
+                                        <span class="sc_form_address_label">E-mail</span>
+                                        <span class="sc_form_address_data">admin@mail.com</span>
+                                    </div>
+                                    <div class="sc_socials sc_socials_type_icons sc_socials_shape_square sc_socials_size_tiny">
+                                        <div class="sc_socials_item">
+                                            <a href="javascript:void(0);" class="social_icons social_facebook">
+                                                <span class="icon-facebook"></span>
+                                            </a>
+                                        </div>
+                                        <div class="sc_socials_item">
+                                            <a href="javascript:void(0);" class="social_icons social_gplus">
+                                                <span class="icon-gplus"></span>
+                                            </a>
+                                        </div>
+                                        <div class="sc_socials_item">
+                                            <a href="javascript:void(0);" class="social_icons social_twitter">
+                                                <span class="icon-twitter"></span>
+                                            </a>
+                                        </div>
+                                        <div class="sc_socials_item">
+                                            <a href="javascript:void(0);" class="social_icons social_linkedin">
+                                                <span class="icon-linkedin"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><div class="sc_form_fields column-2_3">
+                                    <form method="post" action="/contact" class="ten">
+                                        <div class="sc_form_info">
+                                            <div class="sc_form_item sc_form_field label_over">
+                                                <label class="required" for="sc_form_email">E-mail</label>
+                                                <input id="sc_form_email" type="text" name="email" placeholder="E-mail">
+                                            </div>
+                                            <div class="sc_form_item sc_form_field label_over">
+                                                <label class="required" for="sc_form_subj">Subject</label>
+                                                <input id="sc_form_subj" type="text" name="subject" placeholder="Subject">
+                                            </div>
+                                        </div>
+                                        <div class="sc_form_item sc_form_message label_over">
+                                            <label class="required" for="sc_form_message">Message</label>
+                                            <textarea id="sc_form_message" name="message" placeholder="Message"></textarea>
+                                        </div>
+                                        <div class="sc_form_item sc_form_button">
+                                            <button type="submit" class="sc_button sc_button_style_dark">Send Message</button>
+                                        </div>
+                                        <div class="result sc_infobox"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="empty_space height_8_7em"></div>
+                </div>
+                <!-- /Contact Us Today -->
+            </section>
+        </article>
+    </div>
+    <!-- /Content -->
+</div>
+<!-- /Page Content -->
+{% endblock %}

@@ -35,7 +35,10 @@ export abstract class BaseRepository<T> {
 	}
 
 	public async update(news: T): Promise<T> {
-		return this.repository.save(news);
+		return this.repository.save(news).catch(err => {
+			console.log(err);
+			return null;
+		});
 	}
 
 	public async remove(news: T): Promise<void> {

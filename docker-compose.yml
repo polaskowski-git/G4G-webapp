@@ -1,25 +1,25 @@
 version: "2"
 
 services:
-  app:
-    container_name: green4go_app
-    build:
-      context: ./
-      dockerfile: docker/Dockerfile-app
-    ports:
-      - 3100:3100
-      - 5858:5858
-    restart: unless-stopped
-    networks:
-      - green4go-network
-    volumes:
-      - ./package.json:/var/app/package.json
-      - ./volumes/logs:/var/app/logs
-      - ./public:/var/app/public
-      - ./src:/var/app/src
-      - ./assets:/var/app/assets:ro
-      - ./translations:/var/app/translations:ro
-      - ./templates:/var/app/templates:ro
+  # app:
+  #   container_name: green4go_app
+  #   build:
+  #     context: ./
+  #     dockerfile: docker/Dockerfile-app
+  #   ports:
+  #     - 3100:3100
+  #     - 5858:5858
+  #   restart: unless-stopped
+  #   networks:
+  #     - green4go-network
+  #   volumes:
+  #     - ./package.json:/var/app/package.json
+  #     - ./volumes/logs:/var/app/logs
+  #     - ./public:/var/app/public
+  #     - ./src:/var/app/src
+  #     - ./assets:/var/app/assets:ro
+  #     - ./translations:/var/app/translations:ro
+  #     - ./templates:/var/app/templates:ro
 
   db:
     container_name: green4go_db
