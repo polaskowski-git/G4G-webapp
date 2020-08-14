@@ -11,3 +11,4 @@ logs
 cypress
 firebase-adminsdk-config.json
 ormconfig.json
+.DS_Store
