@@ -25,16 +25,16 @@
                                                         <canvas id="sc_skills_canvas_2"></canvas>
                                                         <div class="sc_skills_total" data-start="0" data-stop="75" data-step="1" data-steps="100" data-max="100" data-speed="40" data-duration="3000" data-color="#689d01" data-bg_color="#121215" data-border_color="#121215" data-cutout="96" data-easing="easeOutCirc" data-ed="%">0%</div>
                                                         <div class="avatar"><img src="assets/images/avatar.png" alt="avatar" /></div>
-                                                        <div class="level">7</div>
+                                                        <div class="level" data-bind="user.level.title">7</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="sc_skills_count">
-                                            <div class="sc_skills_total">hypehr96</div>
+                                            <div class="sc_skills_total" data-bind="user.username">hypehr96</div>
                                         </div>
                                         <div class="sc_skills_info">
-                                            <div class="sc_skills_label">Super ziomek</div>
+                                            <div class="sc_skills_label" data-bind="user.email">Super ziomek</div>
                                         </div>
                                     </div>
                                 </div>
@@ -51,19 +51,17 @@
                                         <div class="div-achievement">
                                             <table class="table-achievement">
                                                 <tbody>
-                                                {% for i in 1..15 %}
-                                                <tr class="not-first">
+                                                <tr id="achievement-prototype" class="not-first hide">
                                                     <td class="td-img">
-                                                        <img class="achievement-img" src="assets/images/achievement.png" alt="x" />
+                                                        <img data-bind="achievement.icon" class="achievement-img" src="assets/images/achievement.png" alt="x" />
                                                     </td>
                                                     <td class="td-label" colspan="3">
                                                         <div class="achievement-label">
-                                                            Ogniu krocz ze mną<br/>
-                                                            <small>Zdobyto: 19.10.2020 16:23</small>
+                                                            <span data-bind="achievement.name">Ogniu krocz ze mną</span><br/>
+                                                            <small>Zdobyto: <span data-bind="achievement.date">19.10.2020 16:23</span></small>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                {% endfor %}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -77,7 +75,7 @@
                                     <div class="sc_skills_item sc_skills_style_1 odd first">
                                         <div class="sc_skills_icon  icon-slideshare"></div>
                                         <div class="sc_skills_count">
-                                            <div class="sc_skills_total" data-start="0" data-stop="253" data-step="3" data-max="253" data-speed="16" data-duration="1349" data-ed="">0</div>
+                                            <div class="sc_skills_total" data-bind-skill="stats.trainingsCount" data-start="0" data-stop="253" data-step="3" data-max="253" data-speed="16" data-duration="1349" data-ed="">0</div>
                                         </div>
                                         <div class="sc_skills_info">
                                             <div class="sc_skills_label">Trainings</div>
@@ -92,7 +90,7 @@
                                     <div class="sc_skills_item sc_skills_style_1 odd first">
                                         <div class="sc_skills_icon icon-iconmonstr-police-weapon-icon"></div>
                                         <div class="sc_skills_count">
-                                            <div class="sc_skills_total" data-start="0" data-stop="1200" data-step="12" data-max="1200" data-speed="22" data-duration="2200" data-ed="">0</div>
+                                            <div class="sc_skills_total" data-bind-skill="stats.shotsCount" data-start="0" data-stop="1200" data-step="12" data-max="1200" data-speed="22" data-duration="2200" data-ed="">0</div>
                                         </div>
                                         <div class="sc_skills_info">
                                             <div class="sc_skills_label">Shots</div>
@@ -107,7 +105,7 @@
                                     <div class="sc_skills_item sc_skills_style_1 odd first">
                                         <div class="sc_skills_icon icon-iconmonstr-crosshair-7-icon"></div>
                                         <div class="sc_skills_count">
-                                            <div class="sc_skills_total" data-start="0" data-stop="534" data-step="5" data-max="534" data-speed="33" data-duration="3524" data-ed="">0</div>
+                                            <div class="sc_skills_total" data-bind-skill="stats.accuracyAverageAmount" data-start="0" data-stop="534" data-step="5" data-max="534" data-speed="33" data-duration="3524" data-ed="">0</div>
                                         </div>
                                         <div class="sc_skills_info">
                                             <div class="sc_skills_label">Accuracy</div>
@@ -122,7 +120,7 @@
                                     <div class="sc_skills_item sc_skills_style_1 odd first">
                                         <div class="sc_skills_icon  icon-star-empty"></div>
                                         <div class="sc_skills_count">
-                                            <div class="sc_skills_total" data-start="0" data-stop="688" data-step="7" data-max="688" data-speed="13" data-duration="1278" data-ed="">0</div>
+                                            <div class="sc_skills_total" data-bind-skill="stats.pointsSum" data-start="0" data-stop="688" data-step="7" data-max="688" data-speed="13" data-duration="1278" data-ed="">0</div>
                                         </div>
                                         <div class="sc_skills_info">
                                             <div class="sc_skills_label">Points</div>
@@ -237,4 +235,93 @@
     <!-- /Content -->
 </div>
 <!-- /Page Content -->
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+const binds = {};
+function reloadBinds() {
+    for (const [prop, data] of Object.entries(binds)) {
+        if (typeof data == "object" && data) {
+            for (const [prop2, data2] of Object.entries(data)) {
+                if (typeof data2 == "object" && data2) {
+                    for (const [prop3, data3] of Object.entries(data2)) {
+                        if (typeof data3 == "string") {
+                            if ($(`[data-bind="${prop}.${prop2}.${prop3}"]`).length) {
+                                $(`[data-bind="${prop}.${prop2}.${prop3}"]`).html(data3);
+                            }
+                        }
+                    }
+                } else {
+                    if ($(`[data-bind="${prop}.${prop2}"]`).length) {
+                        $(`[data-bind="${prop}.${prop2}"]`).html(data2);
+                    }
+                }
+            }
+        } else {
+            if ($(`[data-bind="${prop}"]`).length) {
+                $(`[data-bind="${prop}"]`).html(data);
+            }
+        }
+    }
+}
+function loadProfile() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/users/profile"
+    }).done(function(data){
+        binds.user = data;
+        reloadBinds();
+        loadAchievements();
+     });
+}
+function loadStats() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/stats"
+    }).done(function(data){
+        binds.stats = data;
+        reloadBinds();
+        initStats();
+     });
+}
+function initStats() {
+    for (const [key, stat] of Object.entries(binds.stats)) {
+        const $counter = $(`[data-bind-skill="stats.${key}"]`);
+        if ($counter.length) {
+            $counter.attr({
+                "data-start": 0,
+                "data-stop": stat || 0,
+                "data-step": stat < 200 ? 1 : 5,
+                "data-max": stat || 0,
+                "data-speed": 1,
+                "data-duration": 1349,
+                "data-ed": "",
+            });
+        }
+    }
+    kingler_template_sc_init(kingler_template_init_shortcodes_cont);
+}
+function loadAchievements() {
+    const $prototype = $("#achievement-prototype");
+    const $tbody = $prototype.parent();
+
+    $tbody.find("tr:not(#achievement-prototype)").remove();
+    for (const achievement of binds.user.achievements) {
+        const $achievement = $prototype.clone();
+        $achievement.attr("id", null);
+        $achievement.removeClass("hide");
+        $achievement.find("[data-bind='achievement.name']").html(achievement.name);
+        $achievement.find("[data-bind='achievement.icon']").attr("src", achievement.icon);
+        $tbody.append($achievement);
+    }
+}
+$(function(){
+    loader(true);
+    loadProfile();
+    loadStats();
+});
+</script>
 {% endblock %}

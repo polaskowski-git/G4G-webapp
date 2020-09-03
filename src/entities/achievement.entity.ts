@@ -42,7 +42,6 @@ export default class Achievement extends BaseEntity<Achievement> {
 	public async toJSON() {
 		return {
 			id: this.id,
-			users: await (await this.users).map(u => u.toJSON()),
 			name: this.name,
 			icon: this.icon
 		};

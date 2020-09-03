@@ -52,7 +52,7 @@ export default class Level extends BaseEntity<Level> {
 	public toJSON() {
 		return {
 			id: this.id,
-			model: this.title,
+			title: this.title,
 			lowXpTreshold: this.lowXpTreshold,
 			highXpTreshold: this.highXpTreshold
 		};

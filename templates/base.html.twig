@@ -85,10 +85,10 @@
                                             <a href="/">Home</a>
                                         </li>
                                         <li class="menu-item {{ currentPage=="dashboard" ? "current-menu-item" : "" }}">
-                                            <a href="/dashboard">Dashboard</a>
+                                            <a href="{{ app.user is defined and app.user is not null ? "/dashboard" : "javascript:void(0);" }}">Dashboard</a>
                                         </li>
                                         <li class="menu-item {{ currentPage=="trainings" ? "current-menu-item" : "" }}">
-                                            <a href="/trainings">Training list</a>
+                                            <a href="{{ app.user is defined and app.user is not null ? "/trainings" : "javascript:void(0);" }}">Training list</a>
                                         </li>
                                         <li class="menu-item {{ currentPage=="contact" ? "current-menu-item" : "" }}">
                                             <a href="/contact">Contact us</a>
@@ -135,10 +135,10 @@
                                         <a href="/">Home</a>
                                     </li>
                                     <li class="menu-item {{ currentPage=="dashboard" ? "current-menu-item" : "" }}">
-                                        <a href="/dashboard">Dashboard</a>
+                                        <a href="{{ app.user is defined and app.user is not null ? "/dashboard" : "javascript:void(0);" }}">Dashboard</a>
                                     </li>
                                     <li class="menu-item {{ currentPage=="trainings" ? "current-menu-item" : "" }}">
-                                        <a href="/trainings">Training list</a>
+                                        <a href="{{ app.user is defined and app.user is not null ? "/trainings" : "javascript:void(0);" }}">Training list</a>
                                     </li>
                                     <li class="menu-item {{ currentPage=="contact" ? "current-menu-item" : "" }}">
                                         <a href="/contact">Contact us</a>

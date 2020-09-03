@@ -32,7 +32,7 @@ export default class User extends BaseEntity<User> {
     level: Promise<Level>;
     
     @ManyToMany(() => Achievement)
-    @JoinTable()
+    @JoinTable({ name: "users_achievements"})
 	@ApiModelProperty({
 		required: false,
 		type: "array",
@@ -96,15 +96,17 @@ export default class User extends BaseEntity<User> {
 	
 	public async toJSON(): Promise<unknown> {
 		const achievements = (await this.achievements) || [];
+		const level = await this.level;
 
 		return {
 			id: this.id,
 			username: this.username,
 			email: this.email,
-			achievements: await (await this.achievements).map(({name, icon}) => ({name, icon })),
+			achievements: await Promise.all(achievements.map(a => a.toJSON())),
 			streak: this.streak,
 			xpPoints: this.xpPoints,
-			avatar: this.avatar || CONFIG.DEFAULTS.AVATAR
+			avatar: this.avatar || CONFIG.DEFAULTS.AVATAR,
+			level: level ? await level.toJSON() : null
 		};
 	}
 
