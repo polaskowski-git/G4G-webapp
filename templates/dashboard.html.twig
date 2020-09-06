@@ -1,0 +1,328 @@
+{% extends './base.html.twig' %}
+
+{% set currentPage = "dashboard" %}
+
+{% set breadcrumbs = [{url: "/", title: "Home"}, {title: "Dashboard"}] %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="page_content_wrap page_paddings_no">
+    <!-- Content -->
+    <div class="content">
+        <article class="post_item post_item_single">
+            <section class="post_content">
+                <!-- Counters -->
+                <div class="content_wrap">
+                    <div class="empty_space height_7_65em"></div>
+                        <div class="columns_wrap sc_columns columns_nofluid sc_columns_count_4 counters_section">
+                            <div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 no-hover odd first">
+                                        <div class="sc_skills sc_skills_circle width_180_imp div-center" data-type="circle" data-caption="Skills">
+                                            <div class="columns_wrap sc_skills_columns sc_skills_columns_1">
+                                                <div class="sc_skills_column column-1_1">
+                                                    <div class="sc_skills_item sc_skills_style_1 no-hover odd first no-padding">
+                                                        <canvas id="sc_skills_canvas_2"></canvas>
+                                                        <div class="sc_skills_total" data-start="0" data-stop="75" data-step="1" data-steps="100" data-max="100" data-speed="40" data-duration="3000" data-color="#689d01" data-bg_color="#121215" data-border_color="#121215" data-cutout="96" data-easing="easeOutCirc" data-ed="%">0%</div>
+                                                        <div class="avatar"><img src="assets/images/avatar.png" alt="avatar" /></div>
+                                                        <div class="level" data-bind="user.level.title">7</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-bind="user.username">hypehr96</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label" data-bind="user.email">Super ziomek</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table class="table-achievement">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="4">Achievment list</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="div-achievement">
+                                            <table class="table-achievement">
+                                                <tbody>
+                                                <tr id="achievement-prototype" class="not-first hide">
+                                                    <td class="td-img">
+                                                        <img data-bind="achievement.icon" class="achievement-img" src="assets/images/achievement.png" alt="x" />
+                                                    </td>
+                                                    <td class="td-label" colspan="3">
+                                                        <div class="achievement-label">
+                                                            <span data-bind="achievement.name">Ogniu krocz ze mną</span><br/>
+                                                            <small>Zdobyto: <span data-bind="achievement.date">19.10.2020 16:23</span></small>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="empty_space height_4em"></div>
+                            <h4 class="sc_title sc_title_regular margin_bottom_small">Stats</h4>
+                            <div class="column-1_4 sc_column_item sc_column_item_1 odd first">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon  icon-slideshare"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-bind-skill="stats.trainingsCount" data-start="0" data-stop="253" data-step="3" data-max="253" data-speed="16" data-duration="1349" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Trainings</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="column-1_4 sc_column_item sc_column_item_2 even">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon icon-iconmonstr-police-weapon-icon"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-bind-skill="stats.shotsCount" data-start="0" data-stop="1200" data-step="12" data-max="1200" data-speed="22" data-duration="2200" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Shots</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="column-1_4 sc_column_item sc_column_item_3 odd">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon icon-iconmonstr-crosshair-7-icon"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-bind-skill="stats.accuracyAverageAmount" data-start="0" data-stop="534" data-step="5" data-max="534" data-speed="33" data-duration="3524" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Accuracy</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div><div class="column-1_4 sc_column_item sc_column_item_4 even">
+                                <div class="sc_skills sc_skills_counter" data-type="counter" data-caption="Skills">
+                                    <div class="sc_skills_item sc_skills_style_1 odd first">
+                                        <div class="sc_skills_icon  icon-star-empty"></div>
+                                        <div class="sc_skills_count">
+                                            <div class="sc_skills_total" data-bind-skill="stats.pointsSum" data-start="0" data-stop="688" data-step="7" data-max="688" data-speed="13" data-duration="1278" data-ed="">0</div>
+                                        </div>
+                                        <div class="sc_skills_info">
+                                            <div class="sc_skills_label">Points</div>
+                                        </div>
+                                        <a class="sc_skills_read_more" href="#">
+                                            <span class="icon-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="empty_space height_4em"></div>
+                            <div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <h4 class="sc_title sc_title_regular margin_bottom_small">Ranking</h4>
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table>
+                                            <tbody id="ranking-experience">
+                                            <tr class="th">
+                                                <td> #</td>
+                                                <td> Username</td>
+                                                <td> Score</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><div class="column-2_4 sc_column_item sc_column_item_1 odd first">
+                                <h4 class="sc_title sc_title_regular margin_bottom_small">Top accuracy</h4>
+                                <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
+                                    <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
+                                        <table>
+                                            <tbody id="ranking-accuracy">
+                                            <tr class="th">
+                                                <td> #</td>
+                                                <td> Username</td>
+                                                <td> Score</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="empty_space height_8em"></div>
+                </div>
+                <!-- /Counters -->
+            </section>
+        </article>
+    </div>
+    <!-- /Content -->
+</div>
+<!-- /Page Content -->
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+const binds = {};
+function reloadBinds() {
+    for (const [prop, data] of Object.entries(binds)) {
+        if (typeof data == "object" && data) {
+            for (const [prop2, data2] of Object.entries(data)) {
+                if (typeof data2 == "object" && data2) {
+                    for (const [prop3, data3] of Object.entries(data2)) {
+                        if (typeof data3 == "string") {
+                            if ($(`[data-bind="${prop}.${prop2}.${prop3}"]`).length) {
+                                $(`[data-bind="${prop}.${prop2}.${prop3}"]`).html(data3);
+                            }
+                        }
+                    }
+                } else {
+                    if ($(`[data-bind="${prop}.${prop2}"]`).length) {
+                        $(`[data-bind="${prop}.${prop2}"]`).html(data2);
+                    }
+                }
+            }
+        } else {
+            if ($(`[data-bind="${prop}"]`).length) {
+                $(`[data-bind="${prop}"]`).html(data);
+            }
+        }
+    }
+}
+function loadProfile() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/users/profile"
+    }).done(function(data){
+        binds.user = data;
+        reloadBinds();
+        loadAchievements();
+     });
+}
+function loadStats() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/stats"
+    }).done(function(data){
+        binds.stats = data;
+        reloadBinds();
+        initStats();
+     });
+}
+function initStats() {
+    for (const [key, stat] of Object.entries(binds.stats)) {
+        const $counter = $(`[data-bind-skill="stats.${key}"]`);
+        if ($counter.length) {
+            $counter.attr({
+                "data-start": 0,
+                "data-stop": stat || 0,
+                "data-step": stat < 200 ? 1 : 5,
+                "data-max": stat || 0,
+                "data-speed": 1,
+                "data-duration": 1349,
+                "data-ed": "",
+            });
+        }
+    }
+    kingler_template_sc_init(kingler_template_init_shortcodes_cont);
+}
+function loadAchievements() {
+    const $prototype = $("#achievement-prototype");
+    const $tbody = $prototype.parent();
+
+    $tbody.find("tr:not(#achievement-prototype)").remove();
+    for (const achievement of binds.user.achievements) {
+        const $achievement = $prototype.clone();
+        $achievement.attr("id", null);
+        $achievement.removeClass("hide");
+        $achievement.find("[data-bind='achievement.name']").html(achievement.name);
+        $achievement.find("[data-bind='achievement.icon']").attr("src", achievement.icon);
+        $tbody.append($achievement);
+    }
+}
+function loadRankingExperience() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/ranking/experience?limit=5"
+    }).done(function(data){
+        const $tbody = $("#ranking-experience");
+        $tbody.find("tr:not(.th)").remove();
+        let isUserInTop = false;
+        for (const element of data.elements) {
+            $tbody.append($(`<tr class="${element.username == data.userElement.username ? "text-bold" : ""}">
+                <td>${element.rank}</td>
+                <td>${element.username}</td>
+                <td>${element.score}</td>
+            </tr>`));
+
+            if (element.username == data.userElement.username) {
+                isUserInTop = true;
+            }
+        }
+
+        if (data.userElement && !isUserInTop) {
+            $tbody.append($(`<tr class="text-bold">
+                <td>${data.userElement.rank}</td>
+                <td>${data.userElement.username}</td>
+                <td>${data.userElement.score}</td>
+            </tr>`));    
+        }
+    });
+}
+
+function loadRankingAccuracy() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/ranking/accuracy?limit=5"
+    }).done(function(data){
+        const $tbody = $("#ranking-accuracy");
+        $tbody.find("tr:not(.th)").remove();
+        let isUserInTop = false;
+        for (const element of data.elements) {
+            $tbody.append($(`<tr class="${element.username == data.userElement.username ? "text-bold" : ""}">
+                <td>${element.rank}</td>
+                <td>${element.username}</td>
+                <td>${parseFloat(element.score).toFixed(2)}</td>
+            </tr>`));
+
+            if (element.username == data.userElement.username) {
+                isUserInTop = true;
+            }
+        }
+
+        if (data.userElement && !isUserInTop) {
+            $tbody.append($(`<tr class="text-bold">
+                <td>${data.userElement.rank}</td>
+                <td>${data.userElement.username}</td>
+                <td>${parseFloat(data.userElement.score).toFixed(2)}</td>
+            </tr>`));    
+        }
+    });
+}
+$(function(){
+    loader(true);
+    loadProfile();
+    loadStats();
+    loadRankingExperience();
+    loadRankingAccuracy();
+});
+</script>
+{% endblock %}

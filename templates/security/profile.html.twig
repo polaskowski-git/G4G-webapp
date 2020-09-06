@@ -1,0 +1,57 @@
+{% extends '../base.html.twig' %}
+
+{% set breadcrumbs = [{url: "/", title: "Home"}, {title: "Profile"}] %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="page_content_wrap page_paddings_yes">
+    <!-- Content -->
+    <div class="content_wrap">
+        <div class="content">
+            <div class="woocommerce">
+                <div class="woocommerce-additional-fields" style="max-width:520px;margin:0 auto;">
+                    <div id="alert-success" class="sc_infobox sc_infobox_style_success sc_infobox_iconed icon-ok hide">
+                        <p>Your data was successfully saved</p>
+                    </div>
+                    <form id="profile-form" class="sc_form ajax-form" action="/api/users/profile" method="PUT">
+                        <div class="sc_form_field label_over">
+                            <label class="required" for="sc_form_username">E-mail</label>
+                            <input type="email" name="email" placeholder="E-mail" value="{{ app.user.email }}">
+                        </div>
+                        <div class="empty_space height_1em"></div>
+                        <div class="sc_form_field label_over">
+                            <label class="required" for="sc_form_username">Username</label>
+                            <input type="text" name="username" placeholder="Username" value="{{ app.user.username }}">
+                        </div>
+                        <div class="empty_space height_1em"></div>
+                        <div class="sc_form_field label_over">
+                            <label class="required" for="sc_form_username">New password</label>
+                            <input type="password" name="password" placeholder="New password" autocomplete="new-password">
+                        </div>
+                        <div class="empty_space height_1em"></div>
+                        <div class="sc_form_button text-right no-margin">
+                            <button class="sc_button sc_button_style_dark">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Content -->
+</div>
+<!-- /Page Content -->
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+    $(function() {
+        $("#profile-form").on("submit", function() {
+            $("#alert-success").addClass("hide");
+        });
+
+        $("#profile-form").on("ajaxSendSuccess", function() {
+            $("#alert-success").removeClass("hide");
+        });
+    });
+</script>
+{% endblock %}

@@ -10,4 +10,12 @@ export abstract class BaseEntity<T> {
 	public build(options?: Partial<T>) {
 		toPairs(options || {}).forEach(arr => (this[arr[0]] = arr[1]));
 	}
+
+	public update(options?: Partial<T>) {
+		toPairs(options || {}).forEach(arr => {
+			if (arr[1] !== undefined) {
+				this[arr[0]] = arr[1];
+			}
+		});
+	}
 }
