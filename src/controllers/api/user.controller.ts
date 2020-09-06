@@ -20,6 +20,7 @@ import UserRepository from "../../repositories/user.repository";
 import User from "../../entities/user.entity";
 import { ProfileUpdateModel, UserModel } from "../../models/user.models";
 import { ValidationErrorModel } from "../../models/validation.models";
+import LevelRepository from "../../repositories/level.repository";
 
 @ApiPath({
 	path: "/users",
@@ -27,7 +28,7 @@ import { ValidationErrorModel } from "../../models/validation.models";
 })
 @controller("/api/users")
 export default class UserController extends BaseController {
-    constructor(@inject(UserRepository) private _userRepository: UserRepository) {
+    constructor(@inject(UserRepository) private _userRepository: UserRepository, @inject(LevelRepository) private _levelRepository: LevelRepository) {
         super();
     }
 
@@ -157,6 +158,8 @@ export default class UserController extends BaseController {
 		
 		await this.prepareUser(data, user);
 		
+		user.level = Promise.resolve(await this._levelRepository.findOne(1));
+
 		await this._userRepository.create(user);
 
         res.json(await user.toJSON());
