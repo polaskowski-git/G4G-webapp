@@ -5711,6 +5711,10 @@ iframe[name="google_conversion_frame"] { height:1px; min-height:0; display:none;
 	color: #646464 !important;
 }
 
+.text-bold {
+	font-weight: bold !important;
+}
+
 .text-white {
 	color: white !important;
 }

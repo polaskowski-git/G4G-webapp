@@ -137,42 +137,11 @@
                                 <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
                                     <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
                                         <table>
-                                            <tbody>
-                                            <tr>
+                                            <tbody id="ranking-experience">
+                                            <tr class="th">
                                                 <td> #</td>
-                                                <td> Column 1</td>
-                                                <td> Column 2</td>
-                                                <td> Column 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 1</td>
-                                                <td> Raw 1 cell 1</td>
-                                                <td> Raw 1 cell 2</td>
-                                                <td> Raw 1 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 2</td>
-                                                <td> Raw 2 cell 1</td>
-                                                <td> Raw 2 cell 2</td>
-                                                <td> Raw 2 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 3</td>
-                                                <td> Raw 3 cell 1</td>
-                                                <td> Raw 3 cell 2</td>
-                                                <td> Raw 3 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="4">...</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 69</td>
-                                                <td> Raw 4 cell 1</td>
-                                                <td> Raw 4 cell 2</td>
-                                                <td> Raw 4 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="4">...</td>
+                                                <td> Username</td>
+                                                <td> Score</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -183,42 +152,11 @@
                                 <div class="sc_skills sc_skills_counter scale-2" data-type="counter" data-caption="Skills">
                                     <div class="sc_table sc_skills_item sc_skills_style_1 no-padding odd first">
                                         <table>
-                                            <tbody>
-                                            <tr>
+                                            <tbody id="ranking-accuracy">
+                                            <tr class="th">
                                                 <td> #</td>
-                                                <td> Column 1</td>
-                                                <td> Column 2</td>
-                                                <td> Column 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 1</td>
-                                                <td> Raw 1 cell 1</td>
-                                                <td> Raw 1 cell 2</td>
-                                                <td> Raw 1 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 2</td>
-                                                <td> Raw 2 cell 1</td>
-                                                <td> Raw 2 cell 2</td>
-                                                <td> Raw 2 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 3</td>
-                                                <td> Raw 3 cell 1</td>
-                                                <td> Raw 3 cell 2</td>
-                                                <td> Raw 3 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="4">...</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 69</td>
-                                                <td> Raw 4 cell 1</td>
-                                                <td> Raw 4 cell 2</td>
-                                                <td> Raw 4 cell 3</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="4">...</td>
+                                                <td> Username</td>
+                                                <td> Score</td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -318,10 +256,73 @@ function loadAchievements() {
         $tbody.append($achievement);
     }
 }
+function loadRankingExperience() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/ranking/experience?limit=5"
+    }).done(function(data){
+        const $tbody = $("#ranking-experience");
+        $tbody.find("tr:not(.th)").remove();
+        let isUserInTop = false;
+        for (const element of data.elements) {
+            $tbody.append($(`<tr class="${element.username == data.userElement.username ? "text-bold" : ""}">
+                <td>${element.rank}</td>
+                <td>${element.username}</td>
+                <td>${element.score}</td>
+            </tr>`));
+
+            if (element.username == data.userElement.username) {
+                isUserInTop = true;
+            }
+        }
+
+        if (data.userElement && !isUserInTop) {
+            $tbody.append($(`<tr class="text-bold">
+                <td>${data.userElement.rank}</td>
+                <td>${data.userElement.username}</td>
+                <td>${data.userElement.score}</td>
+            </tr>`));    
+        }
+    });
+}
+
+function loadRankingAccuracy() {
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        url: "/api/ranking/accuracy?limit=5"
+    }).done(function(data){
+        const $tbody = $("#ranking-accuracy");
+        $tbody.find("tr:not(.th)").remove();
+        let isUserInTop = false;
+        for (const element of data.elements) {
+            $tbody.append($(`<tr class="${element.username == data.userElement.username ? "text-bold" : ""}">
+                <td>${element.rank}</td>
+                <td>${element.username}</td>
+                <td>${parseFloat(element.score).toFixed(2)}</td>
+            </tr>`));
+
+            if (element.username == data.userElement.username) {
+                isUserInTop = true;
+            }
+        }
+
+        if (data.userElement && !isUserInTop) {
+            $tbody.append($(`<tr class="text-bold">
+                <td>${data.userElement.rank}</td>
+                <td>${data.userElement.username}</td>
+                <td>${parseFloat(data.userElement.score).toFixed(2)}</td>
+            </tr>`));    
+        }
+    });
+}
 $(function(){
     loader(true);
     loadProfile();
     loadStats();
+    loadRankingExperience();
+    loadRankingAccuracy();
 });
 </script>
 {% endblock %}
