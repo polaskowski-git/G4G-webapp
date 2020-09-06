@@ -21,8 +21,7 @@ import {RankingModel} from "../../models/rankings.models";
 export default class RankingController extends BaseController
 {
     constructor(
-        @inject(UserRepository) private _userRepository: UserRepository,
-        @inject(RoundRepository) private _roundRepository: RoundRepository
+        @inject(UserRepository) private _userRepository: UserRepository
     ) {
         super();
     }
@@ -31,27 +30,40 @@ export default class RankingController extends BaseController
         path: "/experience",
         summary: "Get experience ranking",
         responses: {
-            200: { model: RankingModel.NAME }
+            200: { type: "array", model: RankingModel.NAME }
         }
     })
     @httpGet("/experience")
     public async getExperienceRankingList(req: Request, res: Response)
     {
-        return res.json(await this._userRepository.getAchievementRankingList());
+        const user = req.user as User;
+        const elements = await this._userRepository.getRankingByXpPoints(Number(req.query.limit));
+        const userElement = user ? await this._userRepository.getRankByXpPointsOfUser(user) : null;
+        
+        return res.json(new RankingModel({
+            elements,
+            userElement
+        }));
     }
 
     @ApiOperationGet({
         path: "/accuracy",
         summary: "Get accuracy ranking",
         responses: {
-            200: { model: RankingModel.NAME }
+            200: { type: "array", model: RankingModel.NAME }
         }
     })
     @httpGet("/accuracy")
     public async getAccuracyRankingList(req: Request, res: Response)
     {
-        console.log(await this._roundRepository.getAccuracyRanking())
-        return res.json(await this._roundRepository.getAccuracyRanking());
+        const user = req.user as User;
+        const elements = await this._userRepository.getRankingByAccuracy(Number(req.query.limit));
+        const userElement = user ? await this._userRepository.getRankByAccuracyOfUser(user) : null;
+        
+        return res.json(new RankingModel({
+            elements,
+            userElement
+        }));
     }
 }
 

@@ -1198,15 +1198,19 @@ function kingler_template_init_appended_isotope(posts_container, filters) {
 
 // Shortcodes init
 //=====================================================
-
+var kingler_template_init_shortcodes_cont = null;
 function kingler_template_init_shortcodes(cont) {
 	"use strict";
 
 	// Call theme specific action (if exists)
 	if (window.kingler_template_theme_sc_init) kingler_template_theme_sc_init(cont);
 
+	
 	// Call core shortcodes action (if exists)
-	if (window.kingler_template_sc_init) kingler_template_sc_init(cont);
+	if (window.kingler_template_sc_init && !kingler_template_init_shortcodes_cont) {
+		// kingler_template_sc_init(cont);
+		kingler_template_init_shortcodes_cont = cont;
+	}
 }
 
 function kingler_template_animation_shortcodes() {

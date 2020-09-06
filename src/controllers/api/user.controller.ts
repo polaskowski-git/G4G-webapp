@@ -45,6 +45,7 @@ export default class UserController extends BaseController {
 	@httpGet("/profile", checkAuthenticated)
 	public async getProfile(req: Request, res: Response) {
 		const user = req.user as User;
+
         res.json(await user.toJSON());
 	}
 

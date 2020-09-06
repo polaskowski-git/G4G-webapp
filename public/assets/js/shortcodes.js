@@ -841,15 +841,15 @@ function kingler_template_sc_init_skills(container) {
 			var type = skills.data('type');
 			if(type == 'circle') type='pie';
 			var total = (type=='pie' && skills.hasClass('sc_skills_compact_on')) ? skillsItem.find('.sc_skills_data .pie') : skillsItem.find('.sc_skills_total').eq(0);
-			var start = parseInt(total.data('start'));
-			var stop = parseInt(total.data('stop'));
-			var maximum = parseInt(total.data('max'));
+			var start = parseFloat(total.data('start'));
+			var stop = parseFloat(total.data('stop'));
+			var maximum = parseFloat(total.data('max'));
 			var startPercent = Math.round(start/maximum*100);
 			var stopPercent = Math.round(stop/maximum*100);
 			var ed = total.data('ed');
 			var duration = parseInt(total.data('duration'));
 			var speed = parseInt(total.data('speed'));
-			var step = parseInt(total.data('step'));
+			var step = parseFloat(total.data('step'));
 			if (type == 'bar') {
 				var dir = skills.data('dir');
 				var count = skillsItem.find('.sc_skills_count').eq(0);
@@ -906,7 +906,8 @@ function kingler_template_sc_init_skills(container) {
 function kingler_template_sc_animate_skills_counter(start, stop, speed, step, ed, total) {
 	"use strict";
 	start = Math.min(stop, start + step);
-	total.text(start+ed);
+	// if (start+)
+	total.text((start+ed));
 	if (start < stop) {
 		setTimeout(function () {
 			kingler_template_sc_animate_skills_counter(start, stop, speed, step, ed, total);
