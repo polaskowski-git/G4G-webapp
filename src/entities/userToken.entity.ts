@@ -39,7 +39,7 @@ export default class UserToken extends BaseEntity<UserToken> {
 
 	constructor(options: Partial<UserToken>) {
 		const dateWeekAgo = new Date();
-		dateWeekAgo.setDate(dateWeekAgo.getDate() + 7);
+		dateWeekAgo.setDate(dateWeekAgo.getDate() + 365);
 
 		super({
 			token: uuidv4(),
