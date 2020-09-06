@@ -29,6 +29,10 @@ export default class User extends BaseEntity<User> {
 
 	@ManyToOne(() => Level)
 	@JoinColumn({ name: "level_id" })
+	@ApiModelProperty({
+		required: false,
+		model: Level.NAME
+	})
     level: Promise<Level>;
     
     @ManyToMany(() => Achievement)
@@ -44,10 +48,6 @@ export default class User extends BaseEntity<User> {
 		() => Training,
 		c => c.user
 	)
-	@ApiModelProperty({
-		required: false,
-		model: Level.NAME
-	})
 	trainings: Promise<Training[]>;
 
 	@OneToMany(
