@@ -76,6 +76,8 @@ export default class TrainingController extends BaseController {
 		const training = new Training();
 		
 		await this.prepareTraining(data, training);
+
+		training.user = req.user as User;
 		
 		await this._trainingRepository.create(training);
 
